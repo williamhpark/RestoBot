@@ -10,4 +10,4 @@ curl -X POST -H "Content-Type: application/json" -d '{
       "text":"Welcome to Resto Bot! Choose from one of the three options below" 
     }
   ]
-}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAGZAicSPMBAEDxX1O1XYxJdmGz0ZAKAb426y88RfMZAFxTO41LG9Bozd8ZBCfpqZA6jMTAwKRMJUeLFXYZB0HxB6COiWvHoJsTUBfT2ZAa5Xa0m0wE6EYjZADQoFc4XS46LYhrXdfTK4iOustJq3LW3Y4gq8ecfPI18xQoZBbb33Ma1ZA7boTkK"
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAGZAicSPMBAJGmjsCDXub1o0WL2hGeZAh9afMWBdAz8kBiVB2REsZAlZBeuLEERZCP4L0RiZBeof4TTOdp3dHvR2XVFseTiL0J88OqZByp6msl3HQ2AAsAE57HEm4hjK1dFmPjdfYUJcZB6WarhbE4s8HOPHqsqx9MiHviwxZAjDgZCIkilFfXu"
