@@ -3,11 +3,11 @@ const request = require("request");
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 
-let test = (req, res) => {
+const test = (req, res) => {
   return res.send("Hello again");
 };
 
-let getWebhook = (req, res) => {
+const getWebhook = (req, res) => {
   // Your verify token. Should be a random string.
   let VERIFY_TOKEN = MY_VERIFY_TOKEN;
 
@@ -30,13 +30,13 @@ let getWebhook = (req, res) => {
   }
 };
 
-let postWebhook = (req, res) => {
+const postWebhook = (req, res) => {
   let body = req.body;
 
   // Checks this is an event from a page subscription
   if (body.object === "page") {
     // Iterates over each entry - there may be multiple if batched
-    body.entry.forEach(function (entry) {
+    body.entry.forEach((entry) => {
       // Gets the body of the webhook event
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
@@ -63,7 +63,7 @@ let postWebhook = (req, res) => {
 };
 
 // Handles messages events
-function handleMessage(sender_psid, received_message) {
+const handleMessage = (sender_psid, received_message) => {
   let response;
 
   // Checks if the message contains text
@@ -107,10 +107,10 @@ function handleMessage(sender_psid, received_message) {
 
   // Send the response message
   callSendAPI(sender_psid, response);
-}
+};
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
+const handlePostback = (sender_psid, received_postback) => {
   let response;
 
   // Get the payload for the postback
@@ -124,10 +124,10 @@ function handlePostback(sender_psid, received_postback) {
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
-}
+};
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+const callSendAPI = (sender_psid, response) => {
   // Construct the message body
   let request_body = {
     recipient: {
@@ -152,7 +152,7 @@ function callSendAPI(sender_psid, response) {
       }
     }
   );
-}
+};
 
 module.exports = {
   test: test,
