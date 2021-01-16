@@ -1,4 +1,13 @@
-== WEBHOOK EVENTS ==
+== SET THE GREETING MESSAGE ==
 
-messaging_postbacks
-    Postbacks occur when a postback button, Get Started button, or persistent menu item is tapped.
+Enable the greeting message within the Facebook page > Messaging.
+Within the projectt folder on your system, open Git bash and run:
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "greeting": [
+    {
+      "locale":"default",
+      "text":"Welcome to Resto Bot! Choose from one of the three options below" 
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAGZAicSPMBAEDxX1O1XYxJdmGz0ZAKAb426y88RfMZAFxTO41LG9Bozd8ZBCfpqZA6jMTAwKRMJUeLFXYZB0HxB6COiWvHoJsTUBfT2ZAa5Xa0m0wE6EYjZADQoFc4XS46LYhrXdfTK4iOustJq3LW3Y4gq8ecfPI18xQoZBbb33Ma1ZA7boTkK"

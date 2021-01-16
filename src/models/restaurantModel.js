@@ -5,4 +5,10 @@ const showSchema = new mongoose.Schema({
   location: { type: String, required: true },
   rating: { type: String },
   reviewNumber: { type: String },
+  price: { type: String },
+  image: { type: String },
 });
+
+const Restaurant = mongoose.model("restaurants", restaurantSchema);
+
+module.exports = Restaurant;
