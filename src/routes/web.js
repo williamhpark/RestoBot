@@ -1,15 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const chatbotController = require("../controllers/chatbotController");
+const homepageController = require("../controllers/homepageController");
+const chatBotController = require("../controllers/chatBotController");
 
 let initWebRoutes = (app) => {
-  router.get("/", chatbotController.test);
-
-  router.get("/webhook", chatbotController.getWebhook);
-  router.post("/webhook", chatbotController.postWebhook);
-
-  // Default value
+  router.get("/", homepageController.getHomepage);
+  router.get("/webhook", chatBotController.getWebhook);
+  router.post("/webhook", chatBotController.postWebhook);
+  router.get("/profile", homepageController.getFacebookUserProfile);
+  router.post(
+    "/set-up-user-fb-profile",
+    homepageController.setUpUserFacebookProfile
+  );
   return app.use("/", router);
 };
 
