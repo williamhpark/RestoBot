@@ -38,23 +38,22 @@ let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
             elements: [
               {
                 title: "RESTO-BOT",
-                subtitle:
-                  "This is the best restaurant chat bot ever created!!!",
-                image_url: "https://bit.ly/imageToSend",
+                subtitle: "Find a restaurant with friends",
+                image_url: "https://i.imgur.com/jQqzkpZ.png",
                 buttons: [
                   {
                     type: "postback",
-                    title: "Tell me more about CHAT-BOT",
+                    title: "Tell me more",
                     payload: "ABOUT",
                   },
                   {
                     type: "postback",
-                    title: "Start a new session",
+                    title: "Start new session",
                     payload: "NEW_SESSION",
                   },
                   {
                     type: "postback",
-                    title: "Join a friend's session",
+                    title: "Join session",
                     payload: "JOIN_SESSION",
                   },
                 ],
