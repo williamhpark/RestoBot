@@ -5,9 +5,16 @@ require("dotenv").config();
 const viewEngine = require("./config/viewEngine");
 const initWebRoutes = require("./routes/web");
 
-const yelp = require("./apis/yelp");
+const fetchRestaurants = require("./apis/yelp.js");
 
-console.log(yelp);
+fetchRestaurants()
+  .then((restaurants) => {
+    console.log("This is coming from server.js");
+    console.log(restaurants);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 let app = express();
 
