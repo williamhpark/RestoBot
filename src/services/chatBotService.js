@@ -44,8 +44,18 @@ let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
                 buttons: [
                   {
                     type: "postback",
-                    title: "Show Main Menu",
-                    payload: "MAIN_MENU",
+                    title: "Tell me more about CHAT-BOT",
+                    payload: "ABOUT",
+                  },
+                  {
+                    type: "postback",
+                    title: "Start a new session",
+                    payload: "NEW_SESSION",
+                  },
+                  {
+                    type: "postback",
+                    title: "Join a friend's session",
+                    payload: "JOIN_SESSION",
                   },
                 ],
               },
