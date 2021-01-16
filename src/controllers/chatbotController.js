@@ -129,19 +129,24 @@ let handlePostback = async (sender_psid, received_postback) => {
       //code here
       break;
 
-    case "START_SESSION":
+    case "CREATE_SESSION":
       // create unique code
       let code =
         Math.random().toString(36).substring(2, 15) +
         Math.random().toString(36).substring(2, 15);
-      code = code.slice(0, 6);
+      code = code.slice(0, 6).toUpperCase();
       response = {
         text: `Your code is ${code}. Share it with your friends and reply with "Start" when they all joined.`,
       };
       // send message to user with the unique code
       callSendAPI(sender_psid, response);
       // send message to user when others join the room
-      // wait for "Start" command from user
+      // !!! TO DO !!!
+      // Give users option to start room
+      await chatBotService.createResponse(sender_psid);
+      break;
+    case "START_SESSION":
+      //
       break;
     case "JOIN_SESSION":
       break;
@@ -151,18 +156,6 @@ let handlePostback = async (sender_psid, received_postback) => {
     //   break;
     // case "LUNCH_MENU":
     //   await chatBotService.sendLunchMenu(sender_psid);
-    //   break;
-    // case "DINNER_MENU":
-    //   response = {};
-    //   break;
-    // case "PUB_MENU":
-    //   response = {};
-    //   break;
-    // case "RESERVE_TABLE":
-    //   response = {};
-    //   break;
-    // case "SHOW_ROOMS":
-    //   response = {};
     //   break;
     // case "yes":
     //   response = { text: "Thank you!" };

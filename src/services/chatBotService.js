@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-let getFacebookUsername = (sender_psid) => {
+const getFacebookUsername = (sender_psid) => {
   return new Promise((resolve, reject) => {
     // Send the HTTP request to the Messenger Platform
     let uri = `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`;
@@ -26,7 +26,7 @@ let getFacebookUsername = (sender_psid) => {
   });
 };
 
-let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
+const sendResponseWelcomeNewCustomer = (username, sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response_first = { text: `Welcome ${username} to ROBO-CHAT` };
@@ -48,8 +48,8 @@ let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
                   },
                   {
                     type: "postback",
-                    title: "Start new session",
-                    payload: "START_SESSION",
+                    title: "Create session",
+                    payload: "CREATE_SESSION",
                   },
                   {
                     type: "postback",
@@ -75,7 +75,35 @@ let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
   });
 };
 
-let sendMainMenu = (sender_psid) => {
+// Response to the user clicking "CREATE"
+const createResponse = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "button",
+            text: "Try the postback button!",
+            buttons: [
+              {
+                type: "postback",
+                title: "Postback Button",
+                payload: "DEVELOPER_DEFINED_PAYLOAD",
+              },
+            ],
+          },
+        },
+      };
+      // Send a welcome message
+      await sendMessage(sender_psid, response);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const sendMainMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = {
@@ -174,4 +202,5 @@ module.exports = {
   getFacebookUsername: getFacebookUsername,
   sendResponseWelcomeNewCustomer: sendResponseWelcomeNewCustomer,
   sendMainMenu: sendMainMenu,
+  createResponse: createResponse,
 };
