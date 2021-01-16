@@ -7,6 +7,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
+  // to delete
   let body = req.body;
 
   // Check the webhook event is from a Page subscription
