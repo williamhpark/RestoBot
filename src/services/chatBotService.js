@@ -49,7 +49,7 @@ let sendResponseWelcomeNewCustomer = (username, sender_psid) => {
                   {
                     type: "postback",
                     title: "Start new session",
-                    payload: "NEW_SESSION",
+                    payload: "START_SESSION",
                   },
                   {
                     type: "postback",
