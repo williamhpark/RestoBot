@@ -15,7 +15,7 @@ let setUpUserFacebookProfile = (req, res) => {
   // Send the HTTP request to the Messenger Platform
   let data = {
     get_started: {
-      payload: "GET_STARTED",
+      payload: "<GET_STARTED_PAYLOAD>",
     },
     persistent_menu: [
       {
