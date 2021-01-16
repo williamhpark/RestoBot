@@ -7,16 +7,6 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
-  // to delete
   let body = req.body;
 
   // Check the webhook event is from a Page subscription
@@ -126,7 +116,7 @@ let handlePostback = async (sender_psid, received_postback) => {
 
   // Set the response based on the postback payload
   switch (payload) {
-    case "<GET_STARTED_PAYLOAD>":
+    case "GET_STARTED":
       // get username
       let username = await chatBotService.getFacebookUsername(sender_psid);
 
