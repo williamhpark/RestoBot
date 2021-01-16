@@ -1,0 +1,31 @@
+{
+  "intro": {
+    "greeting": "Welcome to RESTO-BOT! We help you and your friends choose the best restaurant to visit.",
+    "details": "REST-BOT allows you and your friends to choose what restaurant you want to visit. One friend starts a session while the others join the session. Then, RESTO-BOT will  will provide 10 restaurant recommendations based on the provided location, and each friend will vote 👍 or 👎. At the end, RESTO-BOT will recommend the restaurant that the most amount of friends voted they wanted to dine at."
+  },
+  "menu": {
+    "info": "Tell me more about RESTO-BOT",
+    "new_session": "I want to start a new session with my friends",
+    "join_session": "I want to join my friend's session"
+  },
+  "begin_session": {
+    "intro": "Your session code is { sessionCode }, please provide this to your friends and tell them to start a new message with me. When all your friends have joined, please say 'start'",
+    "friend_join_notification": "Your friend { friendName } has joined",
+    "join_friend": "Please provide me your friend's session code to continue"
+  },
+  "verify_code": {
+    "success": "Joining session { sessionCode }",
+    "fail": "The code you provided is incorrect. Please provide another code or start a new session"
+  },
+  "main_session": {
+    "location_ask": "To start, please provide me the name of your address to search for the nearest restaurants near you",
+    "location_error": "The location you provided is not valid. Please try another one",
+    "location_valid": "Understood. We will now give you 10 restaurants from your city. Press 👍 if you like the option and 👎 if you don't",
+    "wait_for_friends": "You're all done voting. Please wait for your friends to finish voting",
+    "like": "👍",
+    "dislike": "👎"
+  },
+  "finalize_session": {
+    "results": "The results are in! We recommend you and your friends dine at:"
+  }
+}
