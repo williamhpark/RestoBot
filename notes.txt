@@ -1,0 +1,4 @@
+== WEBHOOK EVENTS ==
+
+messaging_postbacks
+    Postbacks occur when a postback button, Get Started button, or persistent menu item is tapped.

@@ -5,6 +5,10 @@ require("dotenv").config();
 const viewEngine = require("./config/viewEngine");
 const initWebRoutes = require("./routes/web");
 
+const yelp = require("./apis/yelp");
+
+console.log(yelp);
+
 let app = express();
 
 // Config view engine
