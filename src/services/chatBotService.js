@@ -84,12 +84,12 @@ const createResponse = (sender_psid) => {
           type: "template",
           payload: {
             template_type: "button",
-            text: "Try the postback button!",
+            text: "Press START when they all joined.",
             buttons: [
               {
                 type: "postback",
-                title: "Postback Button",
-                payload: "DEVELOPER_DEFINED_PAYLOAD",
+                title: "START",
+                payload: "START_SESSION",
               },
             ],
           },
