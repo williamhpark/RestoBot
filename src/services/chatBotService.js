@@ -29,7 +29,7 @@ const getFacebookUsername = (sender_psid) => {
 const sendResponseWelcomeNewCustomer = (username, sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response_first = { text: `Welcome ${username} to ROBO-CHAT` };
+      let response_first = { text: `Welcome ${username} to RESTO-BOT` };
       let response_second = {
         attachment: {
           type: "template",
