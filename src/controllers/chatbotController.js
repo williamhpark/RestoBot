@@ -182,7 +182,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       await axios.post(
         `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
         {
-          index: 2,
+          index: "2",
         }
       );
       await chatBotService.sendRestaurant(sender_psid, 1);
