@@ -103,22 +103,22 @@ function handleMessage(sender_psid, received_message) {
     .catch(console.error);
 }
 
-// const getYelpData = () => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let yelpData = await mainApi.getRestaurantData(
-//         "Vancouver Canada",
-//         RADAR_API_KEY,
-//         RADAR_COOKIE,
-//         2,
-//         YELP_API_KEY
-//       );
-//       resolve(yelpData);
-//     } catch (err) {
-//       reject(err);
-//     }
-//   });
-// };
+const getYelpData = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let yelpData = await mainApi.getRestaurantData(
+        "Vancouver Canada",
+        RADAR_API_KEY,
+        RADAR_COOKIE,
+        2,
+        YELP_API_KEY
+      );
+      resolve(yelpData);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
 
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
@@ -178,9 +178,10 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.requestCode(sender_psid);
       break;
     case "LIKE_1":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 1,
-      //   });
+      let code = test;
+      axios.post(`https://resto-bot-htn.herokuapp.com/api/accepted/${code}`, {
+        index: 2,
+      });
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
     case "LIKE_2":

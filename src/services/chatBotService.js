@@ -137,6 +137,35 @@ const afterInfo = (sender_psid) => {
   });
 };
 
+// Request address
+// const requestAddress = (sender_psid) => {
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       let response = {
+//         attachment: {
+//           type: "template",
+//           payload: {
+//             template_type: "button",
+//             text: "Press START when they all joined.",
+//             buttons: [
+//               {
+//                 type: "postback",
+//                 title: "START",
+//                 payload: "START_SESSION",
+//               },
+//             ],
+//           },
+//         },
+//       };
+//       await sendMessage(sender_psid, response);
+
+//       resolve("done");
+//     } catch (e) {
+//       reject(e);
+//     }
+//   });
+// };
+
 // Response to the user clicking "CREATE"
 const createResponse = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -165,39 +194,6 @@ const createResponse = (sender_psid) => {
     }
   });
 };
-
-// Response to user clicking "JOIN SESSION"
-// const requestCode = (sender_psid) => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let response = {
-//         attachment: {
-//           type: "template",
-//           payload: {
-//             template_type: "generic",
-//             elements: [
-//               {
-//                 title: What city do you want to search restaurants in?,
-//                 subtitle: testData[count].location.address1,
-//                 image_url: testData[count].image_url,
-//                 buttons: [
-//                   {
-//                     type: "postback",
-//                     title: "LIKE",
-//                     payload: `...`,
-//                   },
-//             ],
-//           },
-//         },
-//       };
-//       await sendMessage(sender_psid, response);
-
-//       resolve("done");
-//     } catch (e) {
-//       reject(e);
-//     }
-//   });
-// }
 
 // Response to the user clicking "START"
 const sendRestaurant = (sender_psid, count) => {
