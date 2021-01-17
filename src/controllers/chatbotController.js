@@ -19,11 +19,10 @@ const client = new Wit({
 });
 
 // create unique code for session
-// let code =
-//   Math.random().toString(36).substring(2, 15) +
-//   Math.random().toString(36).substring(2, 15);
-// code = code.slice(0, 6).toUpperCase();
-let code = "test";
+let code =
+  Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
+code = code.slice(0, 6).toUpperCase();
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
