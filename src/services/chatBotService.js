@@ -249,6 +249,10 @@ const sendRestaurant = (sender_psid, count) => {
 const sendFinalResult = (sender_psid, res) => {
   return new Promise(async (resolve, reject) => {
     try {
+      const res = await axios.get(
+        `https://resto-bot-htn.herokuapp.com/api/results/${code}`
+      );
+
       let response = {
         attachment: {
           type: "template",
