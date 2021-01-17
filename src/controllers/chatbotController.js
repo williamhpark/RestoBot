@@ -19,10 +19,11 @@ const client = new Wit({
 });
 
 // create unique code for session
-let code =
-  Math.random().toString(36).substring(2, 15) +
-  Math.random().toString(36).substring(2, 15);
-code = code.slice(0, 6).toUpperCase();
+// let code =
+//   Math.random().toString(36).substring(2, 15) +
+//   Math.random().toString(36).substring(2, 15);
+// code = code.slice(0, 6).toUpperCase();
+let code = "true";
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -163,21 +164,21 @@ let handlePostback = async (sender_psid, received_postback) => {
       //   testData.forEach((item) => {
       //     axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
       //   });
-      for (let i = 0; i < 6; i++) {
-        await axios.post(
-          `https://resto-bot-htn.herokuapp.com/api/restaurant/${code}`,
-          {
-            name: testData[i].name,
-            location: testData[i].location,
-            rating: testData[i].rating.toString(),
-            review_count: review_count.toString(),
-            price: testData[i].price,
-            image_url: testData[i].image_url,
-            url: testData[i].url,
-            index: (i + 1).toString(),
-          }
-        );
-      }
+      //   for (let i = 0; i < 6; i++) {
+      //     await axios.post(
+      //       `https://resto-bot-htn.herokuapp.com/api/restaurant/${code}`,
+      //       {
+      //         name: testData[i].name,
+      //         location: testData[i].location,
+      //         rating: testData[i].rating.toString(),
+      //         review_count: review_count.toString(),
+      //         price: testData[i].price,
+      //         image_url: testData[i].image_url,
+      //         url: testData[i].url,
+      //         index: (i + 1).toString(),
+      //       }
+      //     );
+      //   }
       response = { text: "What city do you want to dine at?" };
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
