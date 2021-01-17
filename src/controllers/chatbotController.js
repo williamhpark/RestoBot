@@ -122,10 +122,7 @@ function handleMessage(sender_psid, received_message) {
         .split(" ")
         .join("+");
       callSendAPI(sender_psid, {
-        text: `Here are your Google directions to your restaurant!\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
-      });
-      callSendAPI(sender_psid, {
-        text: `https://www.google.ca/maps/dir/${location1}/${location2}`,
+        text: `Here are your Google directions to your restaurant!\n\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
       });
     })
     .catch(console.error);
