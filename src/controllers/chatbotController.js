@@ -73,21 +73,21 @@ let getWebhook = (req, res) => {
   }
 };
 
-// function firstTrait(nlp, name) {
-//   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-// }
+function firstTrait(nlp, name) {
+  return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+}
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
 
   // Check to see if its a greeting
-  // const location = firstTrait(received_message.nlp, "wit$location");
+  const location = firstTrait(received_message.nlp, "wit$location");
   // callSendAPI(sender_psid, { text: `${location}` });
   // callSendAPI(sender_psid, { text: `${location.confidence}` });
-  // if (location && location.confidence > 0.7) {
-  //   callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
-  // }
+  if (location && location.confidence > 0.7) {
+    callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
+  }
 
   // Check if the message contains text
   if (received_message.text) {
@@ -213,7 +213,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "LIKE_1":
       //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     name: ,
+      //     number: 1,
       //   });
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
