@@ -26,9 +26,9 @@ client
   .then((data) => {
     console.log("FIND ME GUYS * % #");
     console.log("Yay, got Wit.ai response: " + JSON.stringify(data));
-    let location1 = data.entities["wit$location:location"][0].body;
-    let location2 = data.entities["wit$location:location"][1].body;
-    console.log(`location is`, location1, location2);
+    // let location1 = data.entities["wit$location:location"][0].body;
+    // let location2 = data.entities["wit$location:location"][1].body;
+    // console.log(`location is`, location1, location2);
   })
   .catch(console.error);
 
@@ -115,6 +115,9 @@ function handleMessage(sender_psid, received_message) {
     .then((data) => {
       console.log("------ FIND ME ------");
       console.log("the response is " + JSON.stringify(data));
+      let location1 = data.entities["wit$location:location"][0].body;
+      let location2 = data.entities["wit$location:location"][1].body;
+      callSendAPI(sender_psid, { text: `${location1} and ${location2}` });
     })
     .catch(console.error);
 
