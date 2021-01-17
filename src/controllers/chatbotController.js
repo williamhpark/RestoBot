@@ -145,6 +145,8 @@ let handlePostback = async (sender_psid, received_postback) => {
       callSendAPI(sender_psid, response);
       // Show user Start button
       await chatBotService.createResponse(sender_psid);
+
+      // SEND ALL MONGODB DATA TO THE DATABASE
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
