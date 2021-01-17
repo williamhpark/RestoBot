@@ -260,9 +260,9 @@ const sendFinalResult = (sender_psid) => {
             template_type: "generic",
             elements: [
               {
-                title: testData[4].name,
-                subtitle: testData[4].location.address1,
-                image_url: testData[4].image_url,
+                title: testData[0].name,
+                subtitle: testData[0].location.address1,
+                image_url: testData[0].image_url,
                 buttons: [
                   {
                     type: "postback",

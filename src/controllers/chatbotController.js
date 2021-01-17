@@ -288,7 +288,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.sendRestaurant(sender_psid, 4);
       break;
     case "DISLIKE_5":
-      await chatBotService.sendRestaurant(sender_psid, 5);
+      await chatBotService.sendFinalResult(sender_psid);
       // END SELECTION SESSION
       break;
     default:
