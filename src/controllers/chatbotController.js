@@ -171,7 +171,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       code = code.slice(0, 6).toUpperCase();
 
       getYelpData.then((result) => {
-        console.log(result);
+        console.log("RESULT: ", result);
         // response.forEach((item) => {
         //   axios.post(`/api/restaurant/${code}`, item);
         // });

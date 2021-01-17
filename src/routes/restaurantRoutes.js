@@ -58,7 +58,7 @@ router.get("/results/:roomid", async (req, res) => {
   try {
     const restaurantResults = await Restaurant.find({
       roomId: req.params.roomid,
-    });
+    }).sort({ liked: -1 }); // return the results in descending order of likes
     res.json(restaurantResults);
   } catch (err) {
     res.status(500).json({ error: err.message });
