@@ -96,9 +96,12 @@ function handleMessage(sender_psid, received_message) {
       let location2 = data.entities["wit$location:location"][1].body
         .split(" ")
         .join("+");
-      callSendAPI(sender_psid, {
-        text: `Here are your Google directions to your restaurant!\n\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
-      });
+
+      if (location1 && location2) {
+        callSendAPI(sender_psid, {
+          text: `Here are your Google directions to your restaurant!\n\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
+        });
+      }
     })
     .catch(console.error);
 }
@@ -158,7 +161,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       //   testData.forEach((item) => {
       //     axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
       //   });
-
+      response = { text: "What city do you want to dine at?" };
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
       };
