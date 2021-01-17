@@ -149,32 +149,14 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
-      console.log(testData);
-      let count = 0;
       callSendAPI(sender_psid, response);
       await chatBotService.sendRestaurant(sender_psid, 0);
       break;
-    // case "RESTAURANT_1":
-    //   count = 1;
-    //   break;
+    case "RESTAURANT_1":
+      await chatBotService.sendRestaurant(sender_psid, 1);
+      break;
     case "JOIN_SESSION":
       break;
-    // case "MAIN_MENU":
-    //   // Send main menu to users
-    //   await chatBotService.sendMainMenu(sender_psid);
-    //   break;
-    // case "LUNCH_MENU":
-    //   await chatBotService.sendLunchMenu(sender_psid);
-    //   break;
-    // case "yes":
-    //   response = { text: "Thank you!" };
-    //   callSendAPI(sender_psid, response);
-    //   break;
-    // case "no":
-    //   response = { text: "Please try another image" };
-    //   callSendAPI(sender_psid, response);
-    //   break;
-    // //   break;
     default:
       console.log("Something wrong with switch case payload");
   }

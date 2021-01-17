@@ -123,6 +123,8 @@ const createResponse = (sender_psid) => {
         },
       };
       await sendMessage(sender_psid, response);
+
+      resolve("done");
     } catch (e) {
       reject(e);
     }
@@ -161,6 +163,8 @@ const sendRestaurant = (sender_psid, count) => {
         },
       };
       await sendMessage(sender_psid, response);
+
+      resolve("done");
     } catch (e) {
       reject(e);
     }
