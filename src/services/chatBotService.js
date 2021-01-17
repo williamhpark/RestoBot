@@ -168,7 +168,7 @@ const sendRestaurant = (sender_psid, count) => {
               {
                 image_url: "https://i.imgur.com/W43smEV.jpg",
                 title: "Address:",
-                subtitle: `Phone: ${testData[count].display_phone}\nFull Address: ${testData[count].address1}\n${testData[count].city}\n${testData[count].zip_code}`,
+                subtitle: `Phone: ${testData[count].display_phone}\nFull Address: ${testData[count].location.address1}\n${testData[count].location.city}\n${testData[count].location.zip_code}`,
               },
             ],
           },
