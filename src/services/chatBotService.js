@@ -102,6 +102,44 @@ const createResponse = (sender_psid) => {
   });
 };
 
+// Response to the user clicking "START"
+const sendRestaurant = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [
+              {
+                title: "!!! RESTAURANT 1 NAME GOES HER !!!E",
+                subtitle: "!!! RESTAURANT 1 DERSCRIPTION GOES HERE !!!",
+                image_url: "https://bit.ly/imageToSend",
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "LIKE",
+                    payload: "LIKE",
+                  },
+                  {
+                    type: "postback",
+                    title: "DISLIKE",
+                    payload: "DISLIKE",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      };
+      await sendMessage(sender_psid, response);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 const sendMainMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {

@@ -126,9 +126,11 @@ let handlePostback = async (sender_psid, received_postback) => {
       );
       break;
     case "ABOUT":
-      //code here
+      response = {
+        text: `RESTO-BOT helps your friends decide on a restaurant to visit with your friends. One friend creates a session and the others join that session via a unique code. Then, the session creator starts the session and everyone votes 👍 or 👎 on each restaurant option.`,
+      };
+      callSendAPI(sender_psid, response);
       break;
-
     case "CREATE_SESSION":
       // create unique code
       let code =
@@ -138,16 +140,15 @@ let handlePostback = async (sender_psid, received_postback) => {
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
       };
-      // send message to user with the unique code
+      // Send message to user with the unique code
       callSendAPI(sender_psid, response);
-      // send message to user when others join the room
-      // !!! TO DO !!!
-      // Give users option to start room
+      // Show user Start button
       await chatBotService.createResponse(sender_psid);
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
       callSendAPI(sender_psid, response);
+      await chatBotService.sendRestaurant(sender_psid);
       break;
     case "JOIN_SESSION":
       break;
