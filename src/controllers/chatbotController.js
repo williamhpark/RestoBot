@@ -129,6 +129,7 @@ const getYelpData = () => {
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
   let response;
+  let res;
 
   // Get the payload for the postback
   let payload = received_postback.payload;
@@ -246,7 +247,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       };
       callSendAPI(sender_psid, response);
 
-      const res = await axios.get(
+      res = await axios.get(
         `https://resto-bot-htn.herokuapp.com/api/results/${code}`
       );
       await chatBotService.sendFinalResult(sender_psid, res.data);
@@ -269,7 +270,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       };
       callSendAPI(sender_psid, response);
 
-      const res = await axios.get(
+      res = await axios.get(
         `https://resto-bot-htn.herokuapp.com/api/results/${code}`
       );
       await chatBotService.sendFinalResult(sender_psid, res.data);
