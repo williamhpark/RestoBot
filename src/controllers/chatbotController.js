@@ -243,9 +243,9 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.requestCode(sender_psid);
       break;
     case "LIKE_1":
-      axios.post(`http://localhost:8080/api/accepted/${code}`, {
-        index: 1,
-      });
+      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
+      //     index: 1,
+      //   });
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
     case "LIKE_2":
