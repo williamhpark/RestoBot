@@ -152,7 +152,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       console.log(testData);
       let count = 0;
       callSendAPI(sender_psid, response);
-      await chatBotService.sendRestaurant(sender_psid, count);
+      await chatBotService.sendRestaurant(sender_psid, 0);
       break;
     // case "RESTAURANT_1":
     //   count = 1;

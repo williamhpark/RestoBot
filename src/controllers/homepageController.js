@@ -56,7 +56,7 @@ let setUpUserFacebookProfile = (req, res) => {
     (err, res, body) => {
       if (!err) {
         return res.status(200).json({
-          message: "setup done!",
+          message: "Setup done!",
         });
       } else {
         return res.status(500).json({

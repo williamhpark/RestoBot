@@ -4,6 +4,8 @@ const configViewEngine = require("./config/viewEngine");
 const initWebRoutes = require("./routes/web");
 const bodyParser = require("body-parser");
 
+// const testData = require("../test");
+
 let app = express();
 
 // use body-parser to post data
@@ -20,4 +22,5 @@ let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`App is running at the port ${port}`);
+  //   console.log(testData);
 });
