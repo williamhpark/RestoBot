@@ -159,12 +159,12 @@ const sendRestaurant = (sender_psid, count) => {
           },
         },
       };
-      sendMessage(sender_psid, response);
+      await sendMessage(sender_psid, response);
 
       if (count === 3) {
         console.log("reached count 3");
         response = { text: "this is the end" };
-        sendMessage(sender_psid, response);
+        await sendMessage(sender_psid, response);
       } else {
         console.log("adding 1 to counter");
         await sendRestaurant(sender_psid, count + 1);
