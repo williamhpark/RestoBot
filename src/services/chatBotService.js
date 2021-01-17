@@ -162,13 +162,7 @@ const sendRestaurant = (sender_psid, count) => {
               },
               {
                 title: "More Info:",
-                subtitle: `Rating: ${testData[count].rating}\n
-                Reviews: ${testData[count].review_count}\n
-                Price: ${testData[count].price}\n
-                Phone: ${testData[count].display_phone}\n
-                Full Address: ${testData[count].address1}\n
-                ${testData[count].city}\n
-                ${testData[count].zip_code}`,
+                subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}\nPhone: ${testData[count].display_phone}\nFull Address: ${testData[count].address1}\n${testData[count].city}\n${testData[count].zip_code}`,
               },
             ],
           },
