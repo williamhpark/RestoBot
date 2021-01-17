@@ -73,6 +73,7 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
     // Search if session code exists
+
     // if (received_message.text === existing session code) {
     //   response = { text: `Joining your friend's session!` };
     //   callSendAPI(sender_psid, response);
@@ -130,7 +131,7 @@ const getYelpData = () => {
         2,
         YELP_API_KEY
       );
-      resolve({ yelpData });
+      resolve(yelpData);
     } catch (err) {
       reject(err);
     }
@@ -170,11 +171,11 @@ let handlePostback = async (sender_psid, received_postback) => {
         Math.random().toString(36).substring(2, 15);
       code = code.slice(0, 6).toUpperCase();
 
-      getYelpData.then((result) => {
+      getYelpData().then((result) => {
         console.log("RESULT: ", result);
-        // response.forEach((item) => {
-        //   axios.post(`/api/restaurant/${code}`, item);
-        // });
+        response.forEach((item) => {
+          axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
+        });
       });
 
       response = {
