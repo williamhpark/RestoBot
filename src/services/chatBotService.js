@@ -1,6 +1,8 @@
 const request = require("request");
 require("dotenv").config();
 
+const testData = require("../../test");
+
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 // const testData = require("../../test");
 
@@ -142,19 +144,19 @@ const sendRestaurant = (sender_psid, count) => {
             template_type: "generic",
             elements: [
               {
-                title: "!!! RESTAURANT 1 NAME GOES HERE !!!",
-                subtitle: "!!! RESTAURANT 1 DERSCRIPTION GOES HERE !!!",
-                image_url: "https://bit.ly/imageToSend",
+                title: testData[count].name,
+                subtitle: testData[count].location.address1,
+                image_url: testData[count].image_url,
                 buttons: [
                   {
                     type: "postback",
                     title: "LIKE",
-                    payload: "LIKE",
+                    payload: `RESTAURANT_${count + 1}`,
                   },
                   {
                     type: "postback",
                     title: "DISLIKE",
-                    payload: "DISLIKE",
+                    payload: `RESTAURANT_${count + 1}`,
                   },
                 ],
               },

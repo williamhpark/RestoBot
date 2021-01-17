@@ -145,7 +145,6 @@ let handlePostback = async (sender_psid, received_postback) => {
       callSendAPI(sender_psid, response);
       // Show user Start button
       await chatBotService.createResponse(sender_psid);
-
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
@@ -154,6 +153,9 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "RESTAURANT_1":
       await chatBotService.sendRestaurant(sender_psid, 1);
+      break;
+    case "RESTAURANT_2":
+      await chatBotService.sendRestaurant(sender_psid, 2);
       break;
     case "JOIN_SESSION":
       break;
