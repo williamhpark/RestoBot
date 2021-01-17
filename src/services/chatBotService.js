@@ -167,6 +167,39 @@ const createResponse = (sender_psid) => {
   });
 };
 
+// Response to user clicking "JOIN SESSION"
+// const joinSession = (sender_psid) => {
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       let response = {
+//         attachment: {
+//           type: "template",
+//           payload: {
+//             template_type: "generic",
+//             elements: [
+//               {
+//                 title: e,
+//                 subtitle: testData[count].location.address1,
+//                 image_url: testData[count].image_url,
+//                 buttons: [
+//                   {
+//                     type: "postback",
+//                     title: "LIKE",
+//                     payload: `...`,
+//                   },
+//             ],
+//           },
+//         },
+//       };
+//       await sendMessage(sender_psid, response);
+
+//       resolve("done");
+//     } catch (e) {
+//       reject(e);
+//     }
+//   });
+// }
+
 // Response to the user clicking "START"
 const sendRestaurant = (sender_psid, count) => {
   return new Promise(async (resolve, reject) => {
@@ -223,4 +256,5 @@ module.exports = {
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
+  // joinSession: joinSession,
 };

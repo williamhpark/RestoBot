@@ -1,9 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
 
-const radarApiKey = process.env.RADAR_API_KEY;
-const cookie = process.env.RADAR_COOKIE;
-const yelpApiKey = process.env.YELP_API_KEY;
 const YelpApi = require("./yelpApi");
 
 async function getRestaurantData(
@@ -52,15 +49,6 @@ async function getRestaurantData(
       console.log(error);
     });
 }
-
-// // Test Run
-// const jsonRestaurants = getRestaurantData(
-//   "Vancouver Canada",
-//   radarApiKey,
-//   cookie,
-//   2,
-//   yelpApiKey
-// );
 
 module.exports = {
   getRestaurantData: getRestaurantData,

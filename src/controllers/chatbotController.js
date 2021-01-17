@@ -6,6 +6,9 @@ const chatBotService = require("../services/chatBotService");
 const mainApi = require("../apis/mainApi");
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const RADAR_API_KEY = process.env.RADAR_API_KEY;
+const RADAR_COOKIE = process.env.RADAR_COOKIE;
+const YELP_API_KEY = process.env.YELP_API_KEY;
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -142,7 +145,13 @@ let handlePostback = async (sender_psid, received_postback) => {
         Math.random().toString(36).substring(2, 15);
       code = code.slice(0, 6).toUpperCase();
 
-      let yelpData = await mainApi.getRestaurantData();
+      let yelpData = await mainApi.getRestaurantData(
+        "Vancouver Canada",
+        RADAR_API_KEY,
+        RADAR_COOKIE,
+        2,
+        YELP_API_KEY
+      );
       axios.post(`/restaurant/${code}`, yelpData);
 
       response = {
@@ -196,6 +205,8 @@ let handlePostback = async (sender_psid, received_postback) => {
       // END SELECTION SESSION
       break;
     case "JOIN_SESSION":
+      response = { text: "Please provide your friend's session code" };
+      await chatBotService.requestCode(sender_psid);
       break;
     default:
       console.log("Something wrong with switch case payload");
