@@ -104,6 +104,40 @@ const sendResponseWelcomeNewCustomer = (username, sender_psid) => {
   });
 };
 
+// Provides options after user asked for more info
+const afterInfo = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "button",
+            text: "So what do you want to do?",
+            buttons: [
+              {
+                type: "postback",
+                title: "Create session",
+                payload: "CREATE_SESSION",
+              },
+              {
+                type: "postback",
+                title: "Join session",
+                payload: "JOIN_SESSION",
+              },
+            ],
+          },
+        },
+      };
+      await sendMessage(sender_psid, response);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 // Response to the user clicking "CREATE"
 const createResponse = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -168,7 +202,7 @@ const sendRestaurant = (sender_psid, count) => {
               {
                 image_url: "https://i.imgur.com/W43smEV.jpg",
                 title: "Address:",
-                subtitle: `Phone: ${testData[count].display_phone}\nFull Address: ${testData[count].location.address1}\n${testData[count].location.city}\n${testData[count].location.zip_code}`,
+                subtitle: `Phone: ${testData[count].display_phone}\nAddress: ${testData[count].location.address1}`,
               },
             ],
           },
@@ -188,4 +222,5 @@ module.exports = {
   sendResponseWelcomeNewCustomer: sendResponseWelcomeNewCustomer,
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
+  afterInfo: afterInfo,
 };

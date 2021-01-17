@@ -128,9 +128,11 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "ABOUT":
       response = {
-        text: `RESTO-BOT helps your friends decide on a restaurant to visit with your friends. One friend creates a session and the others join that session via a unique code. Then, the session creator starts the session and everyone votes 👍 or 👎 on each restaurant option.`,
+        text: `RESTO-BOT helps your friends decide on a restaurant to visit with your friends. One friend creates a session and the others join that session via a unique code. Then, the session creator starts the session and everyone votes LIKE or DISLIKE on each restaurant option.`,
       };
       callSendAPI(sender_psid, response);
+      // Shows buttons to create or join session
+      await chatBotService.afterInfo(sender_psid);
       break;
     case "CREATE_SESSION":
       // create unique code
