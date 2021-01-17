@@ -152,7 +152,9 @@ let handlePostback = async (sender_psid, received_postback) => {
         2,
         YELP_API_KEY
       );
-      axios.post(`/restaurant/${code}`, yelpData);
+      yelpData.forEach((item) => {
+        axios.post(`/restaurant/${code}`, item);
+      });
 
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,

@@ -178,7 +178,7 @@ const createResponse = (sender_psid) => {
 //             template_type: "generic",
 //             elements: [
 //               {
-//                 title: e,
+//                 title: What city do you want to search restaurants in?,
 //                 subtitle: testData[count].location.address1,
 //                 image_url: testData[count].image_url,
 //                 buttons: [
