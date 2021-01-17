@@ -146,8 +146,8 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.createResponse(sender_psid);
       break;
     case "START_SESSION":
-      // response = { text: "Session has started. Let's go!" };
-      // callSendAPI(sender_psid, response);
+      response = { text: `Session has started. Let's go!` };
+      callSendAPI(sender_psid, response);
       break;
     case "JOIN_SESSION":
       break;

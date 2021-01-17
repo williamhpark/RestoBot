@@ -95,7 +95,6 @@ const createResponse = (sender_psid) => {
           },
         },
       };
-      // Send a welcome message
       await sendMessage(sender_psid, response);
     } catch (e) {
       reject(e);
