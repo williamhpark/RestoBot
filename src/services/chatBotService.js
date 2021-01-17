@@ -246,7 +246,7 @@ const sendRestaurant = (sender_psid, count) => {
 };
 
 // Show the final result
-const sendFinalResult = (sender_psid) => {
+const sendFinalResult = (sender_psid, res) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = {
@@ -256,19 +256,19 @@ const sendFinalResult = (sender_psid) => {
             template_type: "generic",
             elements: [
               {
-                title: testData[0].name,
-                subtitle: testData[0].location.address1,
-                image_url: testData[0].image_url,
+                title: res[0].name,
+                subtitle: res[0].location.address1,
+                image_url: res[0].image_url,
               },
               {
                 image_url: "https://i.imgur.com/F9q1ppG.png",
                 title: "Reviews and Price:",
-                subtitle: `Rating: ${testData[0].rating}\nReviews: ${testData[0].review_count}\nPrice: ${testData[0].price}`,
+                subtitle: `Rating: ${res[0].rating}\nReviews: ${res[0].review_count}\nPrice: ${res[0].price}`,
               },
               {
                 image_url: "https://i.imgur.com/uOZ4HRu.png",
                 title: "Address:",
-                subtitle: `Phone: ${testData[0].display_phone}\nAddress: ${testData[0].location.address1}`,
+                subtitle: `Phone: ${res[0].display_phone}\nAddress: ${res[0].location.address1}`,
               },
             ],
           },

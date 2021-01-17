@@ -215,17 +215,14 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.sendRestaurant(sender_psid, 4);
       break;
     case "LIKE_5":
-      await axios.post(
-        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
-        {
-          index: "1",
-        }
+      const res = await axios.get(
+        `https://resto-bot-htn.herokuapp.com/api/results/${code}`
       );
       response = {
-        text: `Based on your group's selections, here's the restaurant we recommend!!`,
+        text: `Based on your group's selections, here's the restaurant we recommend!`,
       };
       callSendAPI(sender_psid, response);
-      await chatBotService.sendFinalResult(sender_psid);
+      await chatBotService.sendFinalResult(sender_psid, res);
       // END SELECTION SESSION
       break;
     case "DISLIKE_1":
