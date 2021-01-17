@@ -249,28 +249,6 @@ const sendRestaurant = (sender_psid, count) => {
   });
 };
 
-const sendFinalResultMessage = (sender_psid) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      let response = {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            text:
-              "Based on your group's selections, here's your final restaurant recommendation!",
-          },
-        },
-      };
-      await sendMessage(sender_psid, response);
-
-      resolve("done");
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
 // Show the final result
 const sendFinalResult = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -315,7 +293,6 @@ module.exports = {
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
-  sendFinalResultMessage: sendFinalResultMessage,
   sendFinalResult: sendFinalResult,
   // requestCode: requestCode,
 };
