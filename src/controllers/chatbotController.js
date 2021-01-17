@@ -4,6 +4,7 @@ const request = require("request");
 const chatBotService = require("../services/chatBotService");
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const testData = require("../../test");
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -144,13 +145,18 @@ let handlePostback = async (sender_psid, received_postback) => {
       callSendAPI(sender_psid, response);
       // Show user Start button
       await chatBotService.createResponse(sender_psid);
+
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
+      console.log(testData);
       let count = 0;
       callSendAPI(sender_psid, response);
       await chatBotService.sendRestaurant(sender_psid, count);
       break;
+    // case "RESTAURANT_1":
+    //   count = 1;
+    //   break;
     case "JOIN_SESSION":
       break;
     // case "MAIN_MENU":
@@ -197,7 +203,7 @@ function callSendAPI(sender_psid, response) {
     },
     (err, res, body) => {
       if (!err) {
-        console.log("message sent!");
+        console.log("Message sent!");
       } else {
         console.error("Unable to send message:" + err);
       }

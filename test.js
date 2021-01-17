@@ -1,4 +1,91 @@
+let testData = [
+  {
+    id: "DudKSeV0CYf3K9ApnihG2A",
+    alias: "paramount-fine-foods-vancouver-2",
+    name: "Paramount Fine Foods",
+    image_url:
+      "https://s3-media3.fl.yelpcdn.com/bphoto/1T6s0m2i3mhG-WZiAcZU9Q/o.jpg",
+    is_closed: false,
+    url:
+      "https://www.yelp.com/biz/paramount-fine-foods-vancouver-2?adjust_creative=6OmqHNB2OQT67LBOS1deSA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6OmqHNB2OQT67LBOS1deSA",
+    review_count: 134,
+    categories: [[Object], [Object], [Object]],
+    rating: 3.5,
+    coordinates: { latitude: 49.2803610180563, longitude: -123.118611177157 },
+    transactions: [],
+    price: "$$",
+    location: {
+      address1: "560 Robson Street",
+      address2: "",
+      address3: null,
+      city: "Vancouver",
+      zip_code: "V6B 2B7",
+      country: "CA",
+      state: "BC",
+      display_address: [Array],
+    },
+    phone: "+16046999323",
+    display_phone: "+1 604-699-9323",
+    distance: 171.38173694735627,
+  },
+  {
+    id: "P_qoxhnolvyTF4nklac8iQ",
+    alias: "five-guys-vancouver-3",
+    name: "Five Guys",
+    image_url:
+      "https://s3-media3.fl.yelpcdn.com/bphoto/9ZwtTxclJp59WUn8ZBh2cQ/o.jpg",
+    is_closed: false,
+    url:
+      "https://www.yelp.com/biz/five-guys-vancouver-3?adjust_creative=6OmqHNB2OQT67LBOS1deSA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6OmqHNB2OQT67LBOS1deSA",
+    review_count: 174,
+    categories: [[Object], [Object]],
+    rating: 3.5,
+    coordinates: { latitude: 49.2810806, longitude: -123.1191094 },
+    transactions: [],
+    price: "$$",
+    location: {
+      address1: "635 Robson Street",
+      address2: "",
+      address3: "",
+      city: "Vancouver",
+      zip_code: "V6B 5J3",
+      country: "CA",
+      state: "BC",
+      display_address: [Array],
+    },
+    phone: "+16046851585",
+    display_phone: "+1 604-685-1585",
+    distance: 94.97140307986048,
+  },
+  {
+    id: "JiWMDZKt-2firk2bYrwiyA",
+    alias: "the-lennox-pub-vancouver",
+    name: "The Lennox Pub",
+    image_url:
+      "https://s3-media1.fl.yelpcdn.com/bphoto/Lj5fGOPzuJSS6cDhvOKiXQ/o.jpg",
+    is_closed: false,
+    url:
+      "https://www.yelp.com/biz/the-lennox-pub-vancouver?adjust_creative=6OmqHNB2OQT67LBOS1deSA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6OmqHNB2OQT67LBOS1deSA",
+    review_count: 126,
+    categories: [[Object], [Object], [Object]],
+    rating: 3.5,
+    coordinates: { latitude: 49.2810599, longitude: -123.11969 },
+    transactions: [],
+    price: "$$",
+    location: {
+      address1: "800 Granville Street",
+      address2: "",
+      address3: "",
+      city: "Vancouver",
+      zip_code: "V6Z 1K3",
+      country: "CA",
+      state: "BC",
+      display_address: [Array],
+    },
+    phone: "+16044080881",
+    display_phone: "+1 604-408-0881",
+    distance: 114.90970431490679,
+  },
+];
 
-
-    
-  
+module.exports = testData;
