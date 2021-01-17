@@ -169,12 +169,12 @@ let handlePostback = async (sender_psid, received_postback) => {
           {
             name: testData[i].name,
             location: testData[i].location,
-            rating: testData[i].rating,
-            review_count: review_count,
+            rating: testData[i].rating.toString(),
+            review_count: review_count.toString(),
             price: testData[i].price,
             image_url: testData[i].image_url,
             url: testData[i].url,
-            index: i + 1,
+            index: (i + 1).toString(),
           }
         );
       }
