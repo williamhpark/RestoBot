@@ -6,6 +6,6 @@ const roomSchema = new mongoose.Schema({
     accepted: { type: [String], required: true },
   });
   
-const User = mongoose.model("rooms", roomSchema);
+const Room = mongoose.model("rooms", roomSchema);
   
-module.exports = User;
+module.exports = Room;

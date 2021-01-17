@@ -8,6 +8,7 @@ const showSchema = new mongoose.Schema({
   price: { type: String },
   image: { type: String },
   link: { type: String },
+  categories: { type: String }
 });
 
 const Restaurant = mongoose.model("restaurants", restaurantSchema);
