@@ -161,10 +161,9 @@ const sendRestaurant = (sender_psid, count) => {
                 ],
               },
               {
+                image_url: "https://i.imgur.com/yXUsIzt.jpg",
                 title: "More Info:",
-                subtitle: `Rating: ${testData[count].rating}\n
-                Reviews: ${testData[count].review_count}\n
-                Price: ${testData[count].price}`,
+                subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}`,
               },
             ],
           },
