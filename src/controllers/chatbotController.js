@@ -116,10 +116,10 @@ function handleMessage(sender_psid, received_message) {
       console.log("------ FIND ME ------");
       console.log("the response is " + JSON.stringify(data));
       let location1 = data.entities["wit$location:location"][0].body
-        .split("")
+        .split(" ")
         .join("+");
       let location2 = data.entities["wit$location:location"][1].body
-        .split("")
+        .split(" ")
         .join("+");
       callSendAPI(sender_psid, { text: `Here's your directions!` });
       callSendAPI(sender_psid, {
