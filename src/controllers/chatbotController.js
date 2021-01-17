@@ -89,7 +89,6 @@ function handleMessage(sender_psid, received_message) {
   client
     .message(received_message.text, {})
     .then((data) => {
-      console.log("------ FIND ME ------");
       console.log("the response is " + JSON.stringify(data));
       let location1 = data.entities["wit$location:location"][0].body
         .split(" ")
@@ -100,7 +99,7 @@ function handleMessage(sender_psid, received_message) {
 
       if (location1 && !location2) {
         // Send location1 to database under current sessioncode
-        chatBotService.createResponse(sender_psid);
+        callSendAPI(sender_psid, { text: "Please provide two locations" });
       } else if (location1 && location2) {
         callSendAPI(sender_psid, {
           text: `Here are your Google directions to your restaurant!\n\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
@@ -165,6 +164,21 @@ let handlePostback = async (sender_psid, received_postback) => {
       //   testData.forEach((item) => {
       //     axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
       //   });
+      for (let i = 0; i < 6; i++) {
+        axios.post(
+          `https://resto-bot-htn.herokuapp.com/api/restaurant/${code}`,
+          {
+            name: testData[i].name,
+            location: testData[i].location,
+            rating: testData[i].rating,
+            review_count: review_count,
+            price: testData[i].price,
+            image_url: testData[i].image_url,
+            url: testData[i].url,
+            index: i + 1,
+          }
+        );
+      }
       response = { text: "What city do you want to dine at?" };
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
@@ -174,15 +188,15 @@ let handlePostback = async (sender_psid, received_postback) => {
       // Show user Start button
       await chatBotService.createResponse(sender_psid);
       break;
-    case "START_SESSION":
-      response = { text: `Session has started. Let's go!` };
-      callSendAPI(sender_psid, response);
-      await chatBotService.sendRestaurant(sender_psid, 0);
-      break;
     case "JOIN_SESSION":
       response = { text: "Please provide your friend's session code" };
       callSendAPI(sender_psid, response);
       await chatBotService.requestCode(sender_psid);
+      break;
+    case "START_SESSION":
+      response = { text: `Session has started. Let's go!` };
+      callSendAPI(sender_psid, response);
+      await chatBotService.sendRestaurant(sender_psid, 0);
       break;
     case "LIKE_1":
       await axios.post(
