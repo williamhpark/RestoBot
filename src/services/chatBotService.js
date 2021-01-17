@@ -260,14 +260,14 @@ const sendFinalResult = (sender_psid, code) => {
             template_type: "generic",
             elements: [
               {
-                title: res[0]["name"],
-                subtitle: res[0]["location"],
-                image_url: res[0]["image"],
+                title: res[0].name,
+                subtitle: res[0].location,
+                image_url: res[0].image,
               },
               {
                 image_url: "https://i.imgur.com/F9q1ppG.png",
                 title: "Reviews and Price:",
-                subtitle: `Rating: ${res[0]["rating"]}\nReviews: ${res[0]["reviewNumber"]}\nPrice: ${res[0]["price"]}`,
+                subtitle: `Rating: ${res[0].rating}\nReviews: ${res[0].reviewNumber}\nPrice: ${res[0].price}`,
               },
               //   {
               //     image_url: "https://i.imgur.com/uOZ4HRu.png",
