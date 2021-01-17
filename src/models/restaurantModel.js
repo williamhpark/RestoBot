@@ -11,6 +11,7 @@ const restaurantSchema = new mongoose.Schema({
   link: { type: String },
   categories: { type: String },
   liked: { type: Number, default: 0 },
+  index: { type: Number },
 });
 
 const Restaurant = mongoose.model("restaurants", restaurantSchema);

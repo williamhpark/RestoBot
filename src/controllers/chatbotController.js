@@ -83,9 +83,9 @@ function handleMessage(sender_psid, received_message) {
 
   // Check to see if its a greeting
   const location = firstTrait(received_message.nlp, "wit$location");
-  // callSendAPI(sender_psid, { text: `${location}` });
-  // callSendAPI(sender_psid, { text: `${location.confidence}` });
-  if (location && location.confidence > 0.7) {
+  if (location && location.confidence > 0.0) {
+    callSendAPI(sender_psid, { text: `${location}` });
+    callSendAPI(sender_psid, { text: `${location.confidence}` });
     callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
   }
 

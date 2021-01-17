@@ -16,6 +16,7 @@ router.post("/restaurant/:roomId", async (req, res) => {
       price,
       image_url,
       url,
+      index,
     } = req.body;
     const newRestaurant = new Restaurant({
       roomId: req.params.roomId,
@@ -26,6 +27,7 @@ router.post("/restaurant/:roomId", async (req, res) => {
       price,
       image: image_url,
       link: url,
+      index,
     });
     const savedRestaurant = await newRestaurant.save();
     res.json(savedRestaurant);
