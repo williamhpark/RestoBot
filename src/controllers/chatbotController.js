@@ -151,11 +151,40 @@ let handlePostback = async (sender_psid, received_postback) => {
       callSendAPI(sender_psid, response);
       await chatBotService.sendRestaurant(sender_psid, 0);
       break;
-    case "RESTAURANT_1":
+    case "LIKE_1":
+      await chatBotService.sendRestaurant(sender_psid, 1);
+      // ADD RESULT TO MONGODB
+      break;
+    case "LIKE_2":
+      await chatBotService.sendRestaurant(sender_psid, 2);
+      // ADD RESULT TO MONGODB
+      break;
+    case "LIKE_3":
+      await chatBotService.sendRestaurant(sender_psid, 3);
+      // ADD RESULT TO MONGODB
+      break;
+    case "LIKE_4":
+      await chatBotService.sendRestaurant(sender_psid, 4);
+      // ADD RESULT TO MONGODB
+      break;
+    case "LIKE_5":
+      await chatBotService.sendRestaurant(sender_psid, 5);
+      // ADD RESULT TO MONGODB
+      break;
+    case "DISLIKE_1":
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
-    case "RESTAURANT_2":
+    case "DISLIKE_2":
       await chatBotService.sendRestaurant(sender_psid, 2);
+      break;
+    case "DISLIKE_3":
+      await chatBotService.sendRestaurant(sender_psid, 3);
+      break;
+    case "DISLIKE_4":
+      await chatBotService.sendRestaurant(sender_psid, 4);
+      break;
+    case "DISLIKE_5":
+      await chatBotService.sendRestaurant(sender_psid, 5);
       break;
     case "JOIN_SESSION":
       break;

@@ -151,12 +151,12 @@ const sendRestaurant = (sender_psid, count) => {
                   {
                     type: "postback",
                     title: "LIKE",
-                    payload: `RESTAURANT_${count + 1}`,
+                    payload: `LIKE_${count + 1}`,
                   },
                   {
                     type: "postback",
                     title: "DISLIKE",
-                    payload: `RESTAURANT_${count + 1}`,
+                    payload: `DISLIKE_${count + 1}`,
                   },
                 ],
               },
