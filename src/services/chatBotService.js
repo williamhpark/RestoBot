@@ -68,7 +68,7 @@ const sendResponseWelcomeNewCustomer = (username, sender_psid) => {
               {
                 title: "RESTO-BOT",
                 subtitle: "Find a restaurant with friends",
-                image_url: "https://i.imgur.com/jQqzkpZ.png",
+                image_url: "https://i.imgur.com/UkbuONK.png",
                 buttons: [
                   {
                     type: "postback",
