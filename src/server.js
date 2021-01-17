@@ -46,5 +46,7 @@ let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`App is running at the port ${port}`);
-  axios.get("http://localhost:8080/api/results/test");
+  //   axios.post("http://localhost:8080/api/accepted/thirdroom", {
+  //     name: "test 8",
+  //   });
 });
