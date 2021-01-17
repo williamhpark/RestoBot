@@ -22,7 +22,7 @@ router.post("/restaurant/:roomId", async (req, res) => {
     const newRestaurant = new Restaurant({
       roomId: req.params.roomId,
       name,
-      location,
+      location: location["address1"],
       rating,
       reviewNumber: review_count,
       price,
