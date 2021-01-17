@@ -258,11 +258,11 @@ const sendFinalResult = (sender_psid, res) => {
                 title: "Reviews and Price:",
                 subtitle: `Rating: ${res[0].rating}\nReviews: ${res[0].reviewNumber}\nPrice: ${res[0].price}`,
               },
-              //   {
-              //     image_url: "https://i.imgur.com/uOZ4HRu.png",
-              //     title: "Address:",
-              //     subtitle: `Phone: ${res[0].display_phone}\nAddress: ${res[0].location}`,
-              //   },
+              {
+                image_url: "https://i.imgur.com/uOZ4HRu.png",
+                title: "Address:",
+                subtitle: `Phone: ${res[0].displayPhone}\nAddress: ${res[0].location}`,
+              },
             ],
           },
         },

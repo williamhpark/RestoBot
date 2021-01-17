@@ -11,6 +11,7 @@ const restaurantSchema = new mongoose.Schema({
   link: { type: String },
   categories: { type: String },
   liked: { type: Number, default: 0 },
+  displayPhone: { type: String },
   index: { type: Number },
 });
 

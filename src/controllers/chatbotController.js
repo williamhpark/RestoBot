@@ -23,7 +23,7 @@ let code =
   Math.random().toString(36).substring(2, 15) +
   Math.random().toString(36).substring(2, 15);
 code = code.slice(0, 6).toUpperCase();
-// let code = "test";
+// let code = "V3B4N5";
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -176,7 +176,7 @@ let handlePostback = async (sender_psid, received_postback) => {
             price: testData[i].price,
             image_url: testData[i].image_url,
             url: testData[i].url,
-            index: (i + 1).toString(),
+            index: i + 1,
           }
         );
       }
