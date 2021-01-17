@@ -146,14 +146,7 @@ const afterInfo = (sender_psid) => {
 //           type: "template",
 //           payload: {
 //             template_type: "button",
-//             text: "Press START when they all joined.",
-//             buttons: [
-//               {
-//                 type: "postback",
-//                 title: "START",
-//                 payload: "START_SESSION",
-//               },
-//             ],
+//             text: "What city do you want to dine at?.",
 //           },
 //         },
 //       };

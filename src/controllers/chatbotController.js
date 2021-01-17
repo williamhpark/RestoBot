@@ -19,10 +19,11 @@ const client = new Wit({
 });
 
 // create unique code for session
-let code =
-  Math.random().toString(36).substring(2, 15) +
-  Math.random().toString(36).substring(2, 15);
-code = code.slice(0, 6).toUpperCase();
+// let code =
+//   Math.random().toString(36).substring(2, 15) +
+//   Math.random().toString(36).substring(2, 15);
+// code = code.slice(0, 6).toUpperCase();
+let code = "test";
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -97,7 +98,10 @@ function handleMessage(sender_psid, received_message) {
         .split(" ")
         .join("+");
 
-      if (location1 && location2) {
+      if (location1 && !location2) {
+        // Send location1 to database under current sessioncode
+        chatBotService.createResponse(sender_psid);
+      } else if (location1 && location2) {
         callSendAPI(sender_psid, {
           text: `Here are your Google directions to your restaurant!\n\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
         });
@@ -226,11 +230,11 @@ let handlePostback = async (sender_psid, received_postback) => {
       response = {
         text: `Based on your group's selections, here's the restaurant we recommend!`,
       };
+      callSendAPI(sender_psid, response);
+
       const res = await axios.get(
         `https://resto-bot-htn.herokuapp.com/api/results/${code}`
       );
-
-      callSendAPI(sender_psid, response);
       await chatBotService.sendFinalResult(sender_psid, res.data);
       break;
     case "DISLIKE_1":
