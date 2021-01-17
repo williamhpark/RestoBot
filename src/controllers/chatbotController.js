@@ -107,7 +107,7 @@ function handleMessage(sender_psid, received_message) {
     callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
   }
 
-  if (received_message === "thisisatest") {
+  if (received_message.text === "thisisatest") {
     callSendAPI(sender_psid, { text: "success yo" });
   }
 
