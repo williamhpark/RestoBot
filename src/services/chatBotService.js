@@ -161,9 +161,8 @@ const sendRestaurant = (sender_psid, count) => {
                 ],
               },
               {
-                title: testData[count].name,
-                subtitle: testData[count].location.address1,
-                image_url: testData[count].image_url,
+                title: "More Info:",
+                subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}`,
               },
             ],
           },
