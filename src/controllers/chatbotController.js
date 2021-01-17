@@ -170,6 +170,7 @@ let handlePostback = async (sender_psid, received_postback) => {
     case "LIKE_5":
       await chatBotService.sendRestaurant(sender_psid, 5);
       // ADD RESULT TO MONGODB
+      // END SELECTION SESSION
       break;
     case "DISLIKE_1":
       await chatBotService.sendRestaurant(sender_psid, 1);
@@ -185,6 +186,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "DISLIKE_5":
       await chatBotService.sendRestaurant(sender_psid, 5);
+      // END SELECTION SESSION
       break;
     case "JOIN_SESSION":
       break;
