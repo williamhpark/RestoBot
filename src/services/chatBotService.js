@@ -240,4 +240,5 @@ module.exports = {
   sendResponseWelcomeNewCustomer: sendResponseWelcomeNewCustomer,
   sendMainMenu: sendMainMenu,
   createResponse: createResponse,
+  sendRestaurant: sendRestaurant,
 };
