@@ -10,6 +10,12 @@ const RADAR_API_KEY = process.env.RADAR_API_KEY;
 const RADAR_COOKIE = process.env.RADAR_COOKIE;
 const YELP_API_KEY = process.env.YELP_API_KEY;
 
+// create unique code
+let code =
+  Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
+code = code.slice(0, 6).toUpperCase();
+
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
@@ -66,13 +72,22 @@ let getWebhook = (req, res) => {
   }
 };
 
+// function firstTrait(nlp, name) {
+//   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+// }
+
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
 
+  // Check to see if its a location
+
   // Check if the message contains text
   if (received_message.text) {
     // Search if session code exists
+
+    let codeResponse = axios.post(`http://localhost:8080/api/results/${code}`);
+    console.log("CODE RESPONSE: ", codeResponse);
 
     // if (received_message.text === existing session code) {
     //   response = { text: `Joining your friend's session!` };
@@ -165,18 +180,14 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.afterInfo(sender_psid);
       break;
     case "CREATE_SESSION":
-      // create unique code
-      let code =
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15);
-      code = code.slice(0, 6).toUpperCase();
-
-      getYelpData().then((result) => {
-        console.log("RESULT: ", result);
-        response.forEach((item) => {
-          axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
-        });
-      });
+      getYelpData()
+        .then((result) => {
+          console.log("RESULT: ", result);
+          response.forEach((item) => {
+            axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
+          });
+        })
+        .catch(() => {});
 
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
