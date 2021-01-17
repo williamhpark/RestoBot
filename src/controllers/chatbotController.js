@@ -227,8 +227,9 @@ let handlePostback = async (sender_psid, received_postback) => {
       const res = await axios.get(
         `https://resto-bot-htn.herokuapp.com/api/results/${code}`
       );
+
       callSendAPI(sender_psid, response);
-      await chatBotService.sendFinalResult(sender_psid, res);
+      await chatBotService.sendFinalResult(sender_psid, res.data);
       break;
     case "DISLIKE_1":
       await chatBotService.sendRestaurant(sender_psid, 1);
