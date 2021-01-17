@@ -18,21 +18,7 @@ const client = new Wit({
   logger: new log.Logger(log.DEBUG), // optional
 });
 
-client
-  .message(
-    "how far is 1095 Hamilton St, Vancouver from 1529 west pender street?",
-    {}
-  )
-  .then((data) => {
-    console.log("FIND ME GUYS * % #");
-    console.log("Yay, got Wit.ai response: " + JSON.stringify(data));
-    // let location1 = data.entities["wit$location:location"][0].body;
-    // let location2 = data.entities["wit$location:location"][1].body;
-    // console.log(`location is`, location1, location2);
-  })
-  .catch(console.error);
-
-// create unique code
+// create unique code for session
 let code =
   Math.random().toString(36).substring(2, 15) +
   Math.random().toString(36).substring(2, 15);
@@ -128,48 +114,18 @@ function handleMessage(sender_psid, received_message) {
     .catch(console.error);
 
   // Check if the message contains text
-  // else if (received_message.text) {
-  // Search if session code exists
-  // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
-  // if (codeResponse.length > 0) {
-  //   response = { text: `Joining your friend's session!` };
-  //   code = received_message.text;
-  // } else {
-  //   response = {
-  //     text: `That code is invalid!`,
-  //   };
-  // }
-  // response = { text: `that was text!` };
-  if (received_message.attachments) {
-    // Gets the URL of the message attachment
-    let attachment_url = received_message.attachments[0].payload.url;
-    response = {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [
-            {
-              title: "Is this the right picture?",
-              subtitle: "Tap a button to answer.",
-              image_url: attachment_url,
-              buttons: [
-                {
-                  type: "postback",
-                  title: "Yes!",
-                  payload: "yes",
-                },
-                {
-                  type: "postback",
-                  title: "No!",
-                  payload: "no",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    };
+  if (received_message.text && !location1) {
+    // Search if session code exists
+    // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
+    // if (codeResponse.length > 0) {
+    //   response = { text: `Joining your friend's session!` };
+    //   code = received_message.text;
+    // } else {
+    //   response = {
+    //     text: `That code is invalid!`,
+    //   };
+    // }
+    response = { text: `that was text!` };
   }
   // Sends the response message
   callSendAPI(sender_psid, response);
