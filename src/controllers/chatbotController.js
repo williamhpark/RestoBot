@@ -80,11 +80,12 @@ function firstTrait(nlp, name) {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
-
+  // FOR TESTING PURPOSES - TO DELETE AFTER
+  callSendAPI(sender_psid, { text: `${received_message}` });
   // Check to see if its a greeting
-  const greeting = firstTrait(received_message.nlp, "wit$greetings");
-  if (greeting && greeting.confidence > 0.8) {
-    callSendAPI(sender_psid, { text: "hey there back!" });
+  const distance = firstTrait(received_message.nlp, "wit$distance");
+  if (distance && distance.confidence > 0.7) {
+    callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
   }
 
   // Check if the message contains text

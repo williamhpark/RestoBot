@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const axios = require("axios");
 
 const configViewEngine = require("./config/viewEngine");
 const initWebRoutes = require("./routes/web");
@@ -45,4 +46,5 @@ let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`App is running at the port ${port}`);
+  axios.get("http://localhost:8080/api/results/test");
 });
