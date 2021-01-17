@@ -143,11 +143,11 @@ let handlePostback = async (sender_psid, received_postback) => {
       // send message to user when others join the room
       // !!! TO DO !!!
       // Give users option to start room
-      // await chatBotService.createResponse(sender_psid);
+      await chatBotService.createResponse(sender_psid);
       break;
     case "START_SESSION":
-      response = { text: "Session has started. Let's go!" };
-      callSendAPI(sender_psid, response);
+      // response = { text: "Session has started. Let's go!" };
+      // callSendAPI(sender_psid, response);
       break;
     case "JOIN_SESSION":
       break;
