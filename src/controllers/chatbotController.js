@@ -29,11 +29,12 @@ client
   })
   .catch(console.error);
 
-// create unique code
-let code =
-  Math.random().toString(36).substring(2, 15) +
-  Math.random().toString(36).substring(2, 15);
-code = code.slice(0, 6).toUpperCase();
+// // create unique code
+// let code =
+//   Math.random().toString(36).substring(2, 15) +
+//   Math.random().toString(36).substring(2, 15);
+// code = code.slice(0, 6).toUpperCase();
+let code = "test";
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -106,6 +107,15 @@ function handleMessage(sender_psid, received_message) {
     callSendAPI(sender_psid, { text: `${location.confidence}` });
     callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
   }
+
+  client
+    .message(received_message.text, {}
+      )
+      .then((data) => {
+        console.log("------ FIND ME ------");
+        console.log("the response is " + JSON.stringfy(data))
+      })
+      .catch(console.error);
 
   if (received_message.text === "thisisatest") {
     callSendAPI(sender_psid, { text: "success yo" });
@@ -234,38 +244,34 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.requestCode(sender_psid);
       break;
     case "LIKE_1":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 1,
-      //   });
+      axios.post(`http://localhost:8080/api/accepted/${code}`, {
+        index: 1,
+      });
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
     case "LIKE_2":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 2,
-      //   });
+      axios.post(`http://localhost:8080/api/accepted/${code}`, {
+        index: 2,
+      });
       await chatBotService.sendRestaurant(sender_psid, 2);
-      // ADD RESULT TO MONGODB
       break;
     case "LIKE_3":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 3,
-      //   });
+      axios.post(`http://localhost:8080/api/accepted/${code}`, {
+        index: 3,
+      });
       await chatBotService.sendRestaurant(sender_psid, 3);
-      // ADD RESULT TO MONGODB
       break;
     case "LIKE_4":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 4,
-      //   });
+      axios.post(`http://localhost:8080/api/accepted/${code}`, {
+        index: 4,
+      });
       await chatBotService.sendRestaurant(sender_psid, 4);
-      // ADD RESULT TO MONGODB
       break;
     case "LIKE_5":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 5,
-      //   });
+      axios.post(`http://localhost:8080/api/accepted/${code}`, {
+        index: 5,
+      });
       await chatBotService.sendRestaurant(sender_psid, 5);
-      // ADD RESULT TO MONGODB
       // END SELECTION SESSION
       break;
     case "DISLIKE_1":
