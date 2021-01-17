@@ -200,7 +200,7 @@ const sendRestaurant = (sender_psid, count) => {
                 subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}`,
               },
               {
-                image_url: "https://imgur.com/uOZ4HRu",
+                image_url: "https://i.imgur.com/uOZ4HRu.png",
                 title: "Address:",
                 subtitle: `Phone: ${testData[count].display_phone}\nAddress: ${testData[count].location.address1}`,
               },
