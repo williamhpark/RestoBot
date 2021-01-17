@@ -225,7 +225,7 @@ let handlePostback = async (sender_psid, received_postback) => {
         text: `Based on your group's selections, here's the restaurant we recommend!`,
       };
       callSendAPI(sender_psid, response);
-      await chatBotService.sendFinalResult(sender_psid);
+      await chatBotService.sendFinalResult(sender_psid, code);
       break;
     case "DISLIKE_1":
       await chatBotService.sendRestaurant(sender_psid, 1);

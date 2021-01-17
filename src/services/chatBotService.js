@@ -246,7 +246,7 @@ const sendRestaurant = (sender_psid, count) => {
 };
 
 // Show the final result
-const sendFinalResult = (sender_psid, res) => {
+const sendFinalResult = (sender_psid, code) => {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await axios.get(
