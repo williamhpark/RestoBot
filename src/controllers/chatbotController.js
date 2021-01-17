@@ -9,6 +9,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const RADAR_API_KEY = process.env.RADAR_API_KEY;
 const RADAR_COOKIE = process.env.RADAR_COOKIE;
 const YELP_API_KEY = process.env.YELP_API_KEY;
+const testData = require("../../test");
 
 // create unique code
 let code =
@@ -173,14 +174,17 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.afterInfo(sender_psid);
       break;
     case "CREATE_SESSION":
-      getYelpData()
-        .then((result) => {
-          console.log("RESULT: ", result);
-          response.forEach((item) => {
-            axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
-          });
-        })
-        .catch(() => {});
+      //   getYelpData()
+      //     .then((result) => {
+      //       console.log("RESULT: ", result);
+      //       response.forEach((item) => {
+      //         axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
+      //       });
+      //     })
+      //     .catch(() => {});
+      testData.forEach((item) => {
+        axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
+      });
 
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
@@ -194,6 +198,11 @@ let handlePostback = async (sender_psid, received_postback) => {
       response = { text: `Session has started. Let's go!` };
       callSendAPI(sender_psid, response);
       await chatBotService.sendRestaurant(sender_psid, 0);
+      break;
+    case "JOIN_SESSION":
+      response = { text: "Please provide your friend's session code" };
+      callSendAPI(sender_psid, response);
+      await chatBotService.requestCode(sender_psid);
       break;
     case "LIKE_1":
       await chatBotService.sendRestaurant(sender_psid, 1);
@@ -231,10 +240,6 @@ let handlePostback = async (sender_psid, received_postback) => {
     case "DISLIKE_5":
       await chatBotService.sendRestaurant(sender_psid, 5);
       // END SELECTION SESSION
-      break;
-    case "JOIN_SESSION":
-      response = { text: "Please provide your friend's session code" };
-      await chatBotService.requestCode(sender_psid);
       break;
     default:
       console.log("Something wrong with switch case payload");
