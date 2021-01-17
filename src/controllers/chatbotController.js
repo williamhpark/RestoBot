@@ -224,6 +224,10 @@ let handlePostback = async (sender_psid, received_postback) => {
       response = {
         text: `Based on your group's selections, here's the restaurant we recommend!`,
       };
+      const res = await axios.get(
+        `https://resto-bot-htn.herokuapp.com/api/results/${code}`
+      );
+      console.log("FINAL RESULTS: ", JSON.stringify(res));
       callSendAPI(sender_psid, response);
       await chatBotService.sendFinalResult(sender_psid, code);
       break;
