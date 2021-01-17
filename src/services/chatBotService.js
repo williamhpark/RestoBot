@@ -2,8 +2,6 @@ const request = require("request");
 require("dotenv").config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const testData = require("../../test");
-
 let sendMessage = (sender_psid, response) => {
   let request_body = {
     recipient: {
@@ -248,11 +246,52 @@ const sendRestaurant = (sender_psid, count) => {
   });
 };
 
+// Show the final result
+const sendFinalResult = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [
+              {
+                title: testData[4].name,
+                subtitle: testData[4].location.address1,
+                image_url: testData[4].image_url,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Yes!",
+                    payload: `YES`,
+                  },
+                  {
+                    type: "postback",
+                    title: "No",
+                    payload: `NO`,
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      };
+      await sendMessage(sender_psid, response);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   getFacebookUsername: getFacebookUsername,
   sendResponseWelcomeNewCustomer: sendResponseWelcomeNewCustomer,
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
+  sendFinalResult: sendFinalResult,
   // requestCode: requestCode,
 };

@@ -26,15 +26,17 @@ client
   .then((data) => {
     console.log("FIND ME GUYS * % #");
     console.log("Yay, got Wit.ai response: " + JSON.stringify(data));
+    let location1 = data.entities["wit$location:location"][0].body;
+    let location2 = data.entities["wit$location:location"][1].body;
+    console.log(`location is`, location1, location2);
   })
   .catch(console.error);
 
-// // create unique code
-// let code =
-//   Math.random().toString(36).substring(2, 15) +
-//   Math.random().toString(36).substring(2, 15);
-// code = code.slice(0, 6).toUpperCase();
-let code = "test";
+// create unique code
+let code =
+  Math.random().toString(36).substring(2, 15) +
+  Math.random().toString(36).substring(2, 15);
+code = code.slice(0, 6).toUpperCase();
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
@@ -270,7 +272,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
       //     index: 5,
       //   });
-      await chatBotService.sendRestaurant(sender_psid, 5);
+      await chatBotService.sendFinalResult(sender_psid);
       // END SELECTION SESSION
       break;
     case "DISLIKE_1":
@@ -292,9 +294,6 @@ let handlePostback = async (sender_psid, received_postback) => {
     default:
       console.log("Something wrong with switch case payload");
   }
-
-  // Send the message to acknowledge the postback
-  // callSendAPI(sender_psid, response);
 };
 
 // Sends response messages via the Send API
