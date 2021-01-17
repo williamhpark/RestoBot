@@ -195,12 +195,12 @@ const sendRestaurant = (sender_psid, count) => {
                 ],
               },
               {
-                image_url: "https://i.imgur.com/O5XuTGl.jpg",
+                image_url: "https://i.imgur.com/F9q1ppG.png",
                 title: "Reviews and Price:",
                 subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}`,
               },
               {
-                image_url: "https://i.imgur.com/W43smEV.jpg",
+                image_url: "https://i.imgur.com/o0z1DjH.png",
                 title: "Address:",
                 subtitle: `Phone: ${testData[count].display_phone}\nAddress: ${testData[count].location.address1}`,
               },
