@@ -272,6 +272,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
       //     index: 5,
       //   });
+      await chatBotService.sendFinalResultMessage(sender_psid);
       await chatBotService.sendFinalResult(sender_psid);
       // END SELECTION SESSION
       break;
@@ -288,6 +289,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.sendRestaurant(sender_psid, 4);
       break;
     case "DISLIKE_5":
+      await chatBotService.sendFinalResultMessage(sender_psid);
       await chatBotService.sendFinalResult(sender_psid);
       // END SELECTION SESSION
       break;

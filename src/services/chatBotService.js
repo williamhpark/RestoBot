@@ -249,6 +249,28 @@ const sendRestaurant = (sender_psid, count) => {
   });
 };
 
+const sendFinalResultMessage = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            text:
+              "Based on your group's selections, here's your final restaurant recommendation!",
+          },
+        },
+      };
+      await sendMessage(sender_psid, response);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 // Show the final result
 const sendFinalResult = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -260,10 +282,19 @@ const sendFinalResult = (sender_psid) => {
             template_type: "generic",
             elements: [
               {
-                title:
-                  "Based on your group's selections, here's your final result!",
-                subtitle: testData[0].name,
+                title: testData[0].name,
+                subtitle: testData[0].location.address1,
                 image_url: testData[0].image_url,
+              },
+              {
+                image_url: "https://i.imgur.com/F9q1ppG.png",
+                title: "Reviews and Price:",
+                subtitle: `Rating: ${testData[0].rating}\nReviews: ${testData[0].review_count}\nPrice: ${testData[0].price}`,
+              },
+              {
+                image_url: "https://i.imgur.com/uOZ4HRu.png",
+                title: "Address:",
+                subtitle: `Phone: ${testData[0].display_phone}\nAddress: ${testData[0].location.address1}`,
               },
             ],
           },
@@ -284,6 +315,7 @@ module.exports = {
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
+  sendFinalResultMessage: sendFinalResultMessage,
   sendFinalResult: sendFinalResult,
   // requestCode: requestCode,
 };
