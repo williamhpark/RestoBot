@@ -23,7 +23,7 @@ const client = new Wit({
 //   Math.random().toString(36).substring(2, 15) +
 //   Math.random().toString(36).substring(2, 15);
 // code = code.slice(0, 6).toUpperCase();
-let code = "true";
+let code = "test";
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
