@@ -2,7 +2,7 @@ const request = require("request");
 require("dotenv").config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const testData = require("../../testData");
+const testData = require("../../test");
 
 let sendMessage = (sender_psid, response) => {
   let request_body = {
