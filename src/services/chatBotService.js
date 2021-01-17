@@ -3,6 +3,32 @@ require("dotenv").config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
+let sendMessage = (sender_psid, response) => {
+  let request_body = {
+    recipient: {
+      id: sender_psid,
+    },
+    message: response,
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  request(
+    {
+      uri: "https://graph.facebook.com/v6.0/me/messages",
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      if (!err) {
+        console.log("message sent!");
+      } else {
+        console.error("Unable to send message:" + err);
+      }
+    }
+  );
+};
+
 const getFacebookUsername = (sender_psid) => {
   return new Promise((resolve, reject) => {
     // Send the HTTP request to the Messenger Platform
@@ -133,12 +159,12 @@ const sendRestaurant = (sender_psid, count) => {
           },
         },
       };
-      await sendMessage(sender_psid, response);
+      sendMessage(sender_psid, response);
 
       if (count === 3) {
         console.log("reached count 3");
         response = { text: "this is the end" };
-        await sendMessage(sender_psid, response);
+        sendMessage(sender_psid, response);
       } else {
         console.log("adding 1 to counter");
         sendRestaurant(sender_psid, count + 1);
@@ -149,105 +175,9 @@ const sendRestaurant = (sender_psid, count) => {
   });
 };
 
-const sendMainMenu = (sender_psid) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      let response = {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [
-              {
-                title: "Our menus",
-                subtitle: "We are please to offer you a wide range of menu",
-                image_url: "https://bit.ly/imageToSend",
-                buttons: [
-                  {
-                    type: "postback",
-                    title: "LUNCH MENU",
-                    payload: "LUNCH_MENU",
-                  },
-                  {
-                    type: "postback",
-                    title: "DINNER MENU",
-                    payload: "DINNER_MENU",
-                  },
-                  {
-                    type: "postback",
-                    title: "PUB MENU",
-                    payload: "PUB_MENU",
-                  },
-                ],
-              },
-              {
-                title: "Hours",
-                subtitle: `MON-FRI 10:00AM - 11:00PM
-                SAT 5PM - 10:00 PM
-                SUN 5PM - 9:00 PM
-                `,
-                image_url: "https://bit.ly/imageOpening",
-                buttons: [
-                  {
-                    type: "postback",
-                    title: "RESERVE A TABLE",
-                    payload: "RESERVE_TABLE",
-                  },
-                ],
-              },
-              {
-                title: "Banquet Rooms",
-                image_url: "https://bit.ly/imageShowRooms",
-                buttons: [
-                  {
-                    type: "postback",
-                    title: "SHOW ROOMS",
-                    payload: "SHOW_ROOMS",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      };
-      // Send a welcome message
-      await sendMessage(sender_psid, response);
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-let sendMessage = (sender_psid, response) => {
-  let request_body = {
-    recipient: {
-      id: sender_psid,
-    },
-    message: response,
-  };
-
-  // Send the HTTP request to the Messenger Platform
-  request(
-    {
-      uri: "https://graph.facebook.com/v6.0/me/messages",
-      qs: { access_token: PAGE_ACCESS_TOKEN },
-      method: "POST",
-      json: request_body,
-    },
-    (err, res, body) => {
-      if (!err) {
-        console.log("message sent!");
-      } else {
-        console.error("Unable to send message:" + err);
-      }
-    }
-  );
-};
-
 module.exports = {
   getFacebookUsername: getFacebookUsername,
   sendResponseWelcomeNewCustomer: sendResponseWelcomeNewCustomer,
-  sendMainMenu: sendMainMenu,
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
 };
