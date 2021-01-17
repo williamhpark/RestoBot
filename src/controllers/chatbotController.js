@@ -178,7 +178,6 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatBotService.requestCode(sender_psid);
       break;
     case "LIKE_1":
-      let code = test;
       //   await axios.post(
       //     `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
       //     {
