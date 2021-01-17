@@ -121,7 +121,9 @@ function handleMessage(sender_psid, received_message) {
       let location2 = data.entities["wit$location:location"][1].body
         .split(" ")
         .join("+");
-      callSendAPI(sender_psid, { text: `Here's your directions!` });
+      callSendAPI(sender_psid, {
+        text: `Here are your Google directions to your restaurant!\nhttps://www.google.ca/maps/dir/${location1}/${location2}`,
+      });
       callSendAPI(sender_psid, {
         text: `https://www.google.ca/maps/dir/${location1}/${location2}`,
       });

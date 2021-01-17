@@ -294,5 +294,4 @@ module.exports = {
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
   sendFinalResult: sendFinalResult,
-  // requestCode: requestCode,
 };
