@@ -165,7 +165,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       //     axios.post(`http://localhost:8080/api/restaurant/${code}`, item);
       //   });
       for (let i = 0; i < 6; i++) {
-        axios.post(
+        await axios.post(
           `https://resto-bot-htn.herokuapp.com/api/restaurant/${code}`,
           {
             name: testData[i].name,
