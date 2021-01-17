@@ -41,10 +41,10 @@ router.post("/restaurant/:roomId", async (req, res) => {
 // @access  Public
 router.post("/accepted/:roomId", async (req, res) => {
   try {
-    const { name } = req.body;
+    const { index } = req.body;
 
     const updatedItem = await Restaurant.updateOne(
-      { roomId: req.params.roomId, name },
+      { roomId: req.params.roomId, index },
       { $inc: { liked: 1 } }
     );
     res.json(updatedItem);
