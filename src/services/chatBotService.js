@@ -161,9 +161,14 @@ const sendRestaurant = (sender_psid, count) => {
                 ],
               },
               {
-                image_url: "https://i.imgur.com/yXUsIzt.jpg",
-                title: "More Info:",
+                image_url: "https://i.imgur.com/O5XuTGl.jpg",
+                title: "Reviews and Price:",
                 subtitle: `Rating: ${testData[count].rating}\nReviews: ${testData[count].review_count}\nPrice: ${testData[count].price}`,
+              },
+              {
+                image_url: "https://i.imgur.com/W43smEV.jpg",
+                title: "Address:",
+                subtitle: `Phone: ${testData[count].display_phone}\nFull Address: ${testData[count].address1}\n${testData[count].city}\n${testData[count].zip_code}`,
               },
             ],
           },
