@@ -85,21 +85,15 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
     // Search if session code exists
-
-    let codeResponse = axios.post(`http://localhost:8080/api/results/${code}`);
-    console.log("CODE RESPONSE: ", codeResponse);
-
-    // if (received_message.text === existing session code) {
-    //   response = { text: `Joining your friend's session!` };
-    //   callSendAPI(sender_psid, response);
-    // !! PUT CODE HERE TO JOIN FRIEND'S SESSION
-    //
-    // };
-
-    // Create the payload for a basic text message
-    response = {
-      text: `You sent the message: "${received_message.text}". Now send me an image!`,
-    };
+    let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
+    if (codeResponse.length > 0) {
+      response = { text: `Joining your friend's session!` };
+      code = received_message.text;
+    } else {
+      response = {
+        text: `That code is invalid!`,
+      };
+    }
   } else if (received_message.attachments) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
@@ -131,7 +125,6 @@ function handleMessage(sender_psid, received_message) {
       },
     };
   }
-
   // Sends the response message
   callSendAPI(sender_psid, response);
 }
