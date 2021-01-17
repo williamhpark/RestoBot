@@ -182,33 +182,45 @@ let handlePostback = async (sender_psid, received_postback) => {
       await axios.post(
         `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
         {
-          index: "2",
+          index: "1",
         }
       );
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
     case "LIKE_2":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 2,
-      //   });
+      await axios.post(
+        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
+        {
+          index: "2",
+        }
+      );
       await chatBotService.sendRestaurant(sender_psid, 2);
       break;
     case "LIKE_3":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 3,
-      //   });
+      await axios.post(
+        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
+        {
+          index: "3",
+        }
+      );
       await chatBotService.sendRestaurant(sender_psid, 3);
       break;
     case "LIKE_4":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 4,
-      //   });
+      await axios.post(
+        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
+        {
+          index: "4",
+        }
+      );
       await chatBotService.sendRestaurant(sender_psid, 4);
       break;
     case "LIKE_5":
-      //   axios.post(`http://localhost:8080/api/accepted/${code}`, {
-      //     index: 5,
-      //   });
+      await axios.post(
+        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
+        {
+          index: "1",
+        }
+      );
       response = {
         text: `Based on your group's selections, here's the restaurant we recommend!!`,
       };
