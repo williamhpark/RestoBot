@@ -2,9 +2,9 @@ require("dotenv").config();
 const request = require("request");
 
 const chatBotService = require("../services/chatBotService");
+const mainApi = require("../apis/mainApi");
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const testData = require("../../test");
 
 let postWebhook = (req, res) => {
   // Parse the request body from the POST
