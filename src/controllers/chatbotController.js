@@ -268,7 +268,11 @@ let handlePostback = async (sender_psid, received_postback) => {
         text: `Based on your group's selections, here's the restaurant we recommend!!`,
       };
       callSendAPI(sender_psid, response);
-      await chatBotService.sendFinalResult(sender_psid);
+
+      const res = await axios.get(
+        `https://resto-bot-htn.herokuapp.com/api/results/${code}`
+      );
+      await chatBotService.sendFinalResult(sender_psid, res.data);
       break;
     default:
       console.log("Something wrong with switch case payload");
