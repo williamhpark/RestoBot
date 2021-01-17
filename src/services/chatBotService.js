@@ -58,7 +58,7 @@ const getFacebookUsername = (sender_psid) => {
 const sendResponseWelcomeNewCustomer = (username, sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response_first = { text: `Welcome ${username} to RESTO-BOT` };
+      let response_first = { text: `Welcome, ${username}, to RESTO-BOT` };
       let response_second = {
         attachment: {
           type: "template",
@@ -165,7 +165,7 @@ const sendRestaurant = (sender_psid, count) => {
                 subtitle: `Rating: ${testData[count].rating}\n
                 Reviews: ${testData[count].review_count}\n
                 Price: ${testData[count].price}\n
-                Phone: ${testData[count].display_phone}
+                Phone: ${testData[count].display_phone}\n
                 Full Address: ${testData[count].address1}\n
                 ${testData[count].city}\n
                 ${testData[count].zip_code}`,
