@@ -115,28 +115,33 @@ function handleMessage(sender_psid, received_message) {
     .then((data) => {
       console.log("------ FIND ME ------");
       console.log("the response is " + JSON.stringify(data));
-      let location1 = data.entities["wit$location:location"][0].body.split('').join('+');
-      let location2 = data.entities["wit$location:location"][1].body.split('').join('+');
+      let location1 = data.entities["wit$location:location"][0].body
+        .split("")
+        .join("+");
+      let location2 = data.entities["wit$location:location"][1].body
+        .split("")
+        .join("+");
+      callSendAPI(sender_psid, { text: `Here's your directions!` });
       callSendAPI(sender_psid, {
         text: `https://www.google.ca/maps/dir/${location1}/${location2}`,
       });
     })
     .catch(console.error);
 
-    // Check if the message contains text
+  // Check if the message contains text
   // else if (received_message.text) {
-    // Search if session code exists
-    // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
-    // if (codeResponse.length > 0) {
-    //   response = { text: `Joining your friend's session!` };
-    //   code = received_message.text;
-    // } else {
-    //   response = {
-    //     text: `That code is invalid!`,
-    //   };
-    // }
-    // response = { text: `that was text!` };
-  } else if (received_message.attachments) {
+  // Search if session code exists
+  // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
+  // if (codeResponse.length > 0) {
+  //   response = { text: `Joining your friend's session!` };
+  //   code = received_message.text;
+  // } else {
+  //   response = {
+  //     text: `That code is invalid!`,
+  //   };
+  // }
+  // response = { text: `that was text!` };
+  if (received_message.attachments) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
     response = {
