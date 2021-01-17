@@ -103,7 +103,7 @@ const createResponse = (sender_psid) => {
 };
 
 // Response to the user clicking "START"
-const sendRestaurant = (sender_psid) => {
+const sendRestaurant = (sender_psid, count) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = {
@@ -121,13 +121,11 @@ const sendRestaurant = (sender_psid) => {
                     type: "postback",
                     title: "LIKE",
                     payload: "LIKE",
-                    randomKey: "randomvalue",
                   },
                   {
                     type: "postback",
                     title: "DISLIKE",
                     payload: "DISLIKE",
-                    randomKey: "randomvalue",
                   },
                 ],
               },
@@ -136,6 +134,13 @@ const sendRestaurant = (sender_psid) => {
         },
       };
       await sendMessage(sender_psid, response);
+
+      if (counter === 3) {
+        response = { text: "this is the end" };
+        await sendMessage(sender_psid, response);
+      } else {
+        sendRestaurant(sender_psid, counter + 1);
+      }
     } catch (e) {
       reject(e);
     }

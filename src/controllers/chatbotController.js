@@ -147,8 +147,9 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
+      let count = 0;
       callSendAPI(sender_psid, response);
-      await chatBotService.sendRestaurant(sender_psid);
+      await chatBotService.sendRestaurant(sender_psid, count);
       break;
     case "JOIN_SESSION":
       break;
