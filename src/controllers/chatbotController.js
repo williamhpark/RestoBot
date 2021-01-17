@@ -114,21 +114,21 @@ function handleMessage(sender_psid, received_message) {
     .catch(console.error);
 
   // Check if the message contains text
-  if (received_message.text && !location1) {
-    // Search if session code exists
-    // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
-    // if (codeResponse.length > 0) {
-    //   response = { text: `Joining your friend's session!` };
-    //   code = received_message.text;
-    // } else {
-    //   response = {
-    //     text: `That code is invalid!`,
-    //   };
-    // }
-    response = { text: `that was text!` };
-  }
-  // Sends the response message
-  callSendAPI(sender_psid, response);
+  // if (received_message.text && !location1) {
+  //   // Search if session code exists
+  //   // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
+  //   // if (codeResponse.length > 0) {
+  //   //   response = { text: `Joining your friend's session!` };
+  //   //   code = received_message.text;
+  //   // } else {
+  //   //   response = {
+  //   //     text: `That code is invalid!`,
+  //   //   };
+  //   // }
+  //   response = { text: `that was text!` };
+  // }
+  // // Sends the response message
+  // callSendAPI(sender_psid, response);
 }
 
 // const getYelpData = () => {
