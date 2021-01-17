@@ -167,7 +167,7 @@ const sendRestaurant = (sender_psid, count) => {
         sendMessage(sender_psid, response);
       } else {
         console.log("adding 1 to counter");
-        sendRestaurant(sender_psid, count + 1);
+        await sendRestaurant(sender_psid, count + 1);
       }
     } catch (e) {
       reject(e);
