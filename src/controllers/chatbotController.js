@@ -72,6 +72,14 @@ function handleMessage(sender_psid, received_message) {
 
   // Check if the message contains text
   if (received_message.text) {
+    // Search if session code exists
+    // if (received_message.text === existing session code) {
+    //   response = { text: `Joining your friend's session!` };
+    //   callSendAPI(sender_psid, response);
+    // !! PUT CODE HERE TO JOIN FRIEND'S SESSION
+    //
+    // };
+
     // Create the payload for a basic text message
     response = {
       text: `You sent the message: "${received_message.text}". Now send me an image!`,
@@ -112,6 +120,23 @@ function handleMessage(sender_psid, received_message) {
   callSendAPI(sender_psid, response);
 }
 
+const getYelpData = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let yelpData = await mainApi.getRestaurantData(
+        "Vancouver Canada",
+        RADAR_API_KEY,
+        RADAR_COOKIE,
+        2,
+        YELP_API_KEY
+      );
+      resolve({ yelpData });
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
   let response;
@@ -145,15 +170,11 @@ let handlePostback = async (sender_psid, received_postback) => {
         Math.random().toString(36).substring(2, 15);
       code = code.slice(0, 6).toUpperCase();
 
-      let yelpData = await mainApi.getRestaurantData(
-        "Vancouver Canada",
-        RADAR_API_KEY,
-        RADAR_COOKIE,
-        2,
-        YELP_API_KEY
-      );
-      yelpData.forEach((item) => {
-        axios.post(`/api/restaurant/${code}`, item);
+      getYelpData.then((result) => {
+        console.log(result);
+        // response.forEach((item) => {
+        //   axios.post(`/api/restaurant/${code}`, item);
+        // });
       });
 
       response = {

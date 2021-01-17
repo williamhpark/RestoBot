@@ -52,7 +52,7 @@ router.post("/accepted/:roomId", async (req, res) => {
 });
 
 // @route   GET /results/:roomid
-// @desc    Retreive ALL restaurants that were accepted in a room
+// @desc    Retreive ALL restaurants that were retreived from the Yelp API for a room
 // @access  Public
 router.get("/results/:roomid", async (req, res) => {
   try {
