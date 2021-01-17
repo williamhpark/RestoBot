@@ -1,5 +1,6 @@
 require("dotenv").config();
 const request = require("request");
+const axios = require("axios");
 
 const chatBotService = require("../services/chatBotService");
 const mainApi = require("../apis/mainApi");
@@ -140,6 +141,10 @@ let handlePostback = async (sender_psid, received_postback) => {
         Math.random().toString(36).substring(2, 15) +
         Math.random().toString(36).substring(2, 15);
       code = code.slice(0, 6).toUpperCase();
+
+      let yelpData = await mainApi.getRestaurantData();
+      axios.post(`/restaurant/${code}`, yelpData);
+
       response = {
         text: `Your code is ${code}. Share it with your friends so they can join your session too!`,
       };
@@ -147,8 +152,6 @@ let handlePostback = async (sender_psid, received_postback) => {
       callSendAPI(sender_psid, response);
       // Show user Start button
       await chatBotService.createResponse(sender_psid);
-
-      // SEND ALL MONGODB DATA TO THE DATABASE
       break;
     case "START_SESSION":
       response = { text: `Session has started. Let's go!` };
