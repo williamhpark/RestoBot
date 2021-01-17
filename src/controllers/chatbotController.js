@@ -245,7 +245,6 @@ let handlePostback = async (sender_psid, received_postback) => {
       };
       callSendAPI(sender_psid, response);
       await chatBotService.sendFinalResult(sender_psid);
-      // END SELECTION SESSION
       break;
     default:
       console.log("Something wrong with switch case payload");

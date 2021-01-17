@@ -261,19 +261,19 @@ const sendFinalResult = (sender_psid, res) => {
             elements: [
               {
                 title: res[0].name,
-                subtitle: res[0].location.address1,
-                image_url: res[0].image_url,
+                subtitle: res[0].location,
+                image_url: res[0].image,
               },
               {
                 image_url: "https://i.imgur.com/F9q1ppG.png",
                 title: "Reviews and Price:",
-                subtitle: `Rating: ${res[0].rating}\nReviews: ${res[0].review_count}\nPrice: ${res[0].price}`,
+                subtitle: `Rating: ${res[0].rating}\nReviews: ${res[0].reviewNumber}\nPrice: ${res[0].price}`,
               },
-              {
-                image_url: "https://i.imgur.com/uOZ4HRu.png",
-                title: "Address:",
-                subtitle: `Phone: ${res[0].display_phone}\nAddress: ${res[0].location.address1}`,
-              },
+              //   {
+              //     image_url: "https://i.imgur.com/uOZ4HRu.png",
+              //     title: "Address:",
+              //     subtitle: `Phone: ${res[0].display_phone}\nAddress: ${res[0].location}`,
+              //   },
             ],
           },
         },
