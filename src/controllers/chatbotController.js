@@ -153,7 +153,7 @@ let handlePostback = async (sender_psid, received_postback) => {
         YELP_API_KEY
       );
       yelpData.forEach((item) => {
-        axios.post(`/restaurant/${code}`, item);
+        axios.post(`/api/restaurant/${code}`, item);
       });
 
       response = {

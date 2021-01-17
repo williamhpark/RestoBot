@@ -168,7 +168,7 @@ const createResponse = (sender_psid) => {
 };
 
 // Response to user clicking "JOIN SESSION"
-// const joinSession = (sender_psid) => {
+// const requestCode = (sender_psid) => {
 //   return new Promise(async (resolve, reject) => {
 //     try {
 //       let response = {
@@ -256,5 +256,5 @@ module.exports = {
   createResponse: createResponse,
   sendRestaurant: sendRestaurant,
   afterInfo: afterInfo,
-  // joinSession: joinSession,
+  // requestCode: requestCode,
 };
