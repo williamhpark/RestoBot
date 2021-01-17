@@ -73,15 +73,19 @@ let getWebhook = (req, res) => {
   }
 };
 
-// function firstTrait(nlp, name) {
-//   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-// }
+function firstTrait(nlp, name) {
+  return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+}
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
 
-  // Check to see if its a location
+  // Check to see if its a greeting
+  const greeting = firstTrait(received_message.nlp, "wit$greetings");
+  if (greeting && greeting.confidence > 0.8) {
+    sendResponse("Hi there!");
+  }
 
   // Check if the message contains text
   if (received_message.text) {
@@ -130,22 +134,22 @@ function handleMessage(sender_psid, received_message) {
   callSendAPI(sender_psid, response);
 }
 
-const getYelpData = () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      let yelpData = await mainApi.getRestaurantData(
-        "Vancouver Canada",
-        RADAR_API_KEY,
-        RADAR_COOKIE,
-        2,
-        YELP_API_KEY
-      );
-      resolve(yelpData);
-    } catch (err) {
-      reject(err);
-    }
-  });
-};
+// const getYelpData = () => {
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       let yelpData = await mainApi.getRestaurantData(
+//         "Vancouver Canada",
+//         RADAR_API_KEY,
+//         RADAR_COOKIE,
+//         2,
+//         YELP_API_KEY
+//       );
+//       resolve(yelpData);
+//     } catch (err) {
+//       reject(err);
+//     }
+//   });
+// };
 
 // Handles messaging_postbacks events
 let handlePostback = async (sender_psid, received_postback) => {
