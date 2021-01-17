@@ -46,7 +46,7 @@ let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`App is running at the port ${port}`);
-  //   axios.post("http://localhost:8080/api/accepted/thirdroom", {
-  //     name: "test 8",
-  //   });
+  axios.post("https://resto-bot-htn.herokuapp.com/api/accepted/test", {
+    index: 1,
+  });
 });

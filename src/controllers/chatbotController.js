@@ -80,22 +80,11 @@ let getWebhook = (req, res) => {
   }
 };
 
-function firstTrait(nlp, name) {
-  return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-}
-
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
 
-  // Check to see if its a greeting
-  const location = firstTrait(received_message.nlp, "wit$location");
-  if (location && location.confidence > 0.0) {
-    callSendAPI(sender_psid, { text: `${location}` });
-    callSendAPI(sender_psid, { text: `${location.confidence}` });
-    callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
-  }
-
+  // Parse response with wit.ai for location directions
   client
     .message(received_message.text, {})
     .then((data) => {
@@ -112,23 +101,6 @@ function handleMessage(sender_psid, received_message) {
       });
     })
     .catch(console.error);
-
-  // Check if the message contains text
-  // if (received_message.text && !location1) {
-  //   // Search if session code exists
-  //   // let codeResponse = axios.get(`http://localhost:8080/api/results/${code}`);
-  //   // if (codeResponse.length > 0) {
-  //   //   response = { text: `Joining your friend's session!` };
-  //   //   code = received_message.text;
-  //   // } else {
-  //   //   response = {
-  //   //     text: `That code is invalid!`,
-  //   //   };
-  //   // }
-  //   response = { text: `that was text!` };
-  // }
-  // // Sends the response message
-  // callSendAPI(sender_psid, response);
 }
 
 // const getYelpData = () => {
