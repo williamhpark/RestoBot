@@ -83,8 +83,8 @@ function handleMessage(sender_psid, received_message) {
   // FOR TESTING PURPOSES - TO DELETE AFTER
   callSendAPI(sender_psid, { text: `${received_message}` });
   // Check to see if its a greeting
-  const distance = firstTrait(received_message.nlp, "wit$distance");
-  if (distance && distance.confidence > 0.7) {
+  const location = firstTrait(received_message.nlp, "wit$location");
+  if (location && location.confidence > 0.7) {
     callSendAPI(sender_psid, { text: "YOU ENTERED A DISTANCE!" });
   }
 
