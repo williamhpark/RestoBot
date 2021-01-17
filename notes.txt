@@ -7,7 +7,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "greeting": [
     {
       "locale":"default",
-      "text":"Welcome to Resto Bot! Choose from one of the three options below" 
+      "text":"Welcome to RESTO-BOT! Press "Get Started" to begin" 
     }
   ]
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAGZAicSPMBAJGmjsCDXub1o0WL2hGeZAh9afMWBdAz8kBiVB2REsZAlZBeuLEERZCP4L0RiZBeof4TTOdp3dHvR2XVFseTiL0J88OqZByp6msl3HQ2AAsAE57HEm4hjK1dFmPjdfYUJcZB6WarhbE4s8HOPHqsqx9MiHviwxZAjDgZCIkilFfXu"

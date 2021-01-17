@@ -1,12 +1,35 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
 const configViewEngine = require("./config/viewEngine");
 const initWebRoutes = require("./routes/web");
-const bodyParser = require("body-parser");
 
-// const testData = require("../test");
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-let app = express();
+// Routes Config
+app.use("/api", require("./routes/restaurantRoutes"));
+
+// DB Config
+console.log("Connecting to MongoDB.");
+mongoose.connect(
+  process.env.MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  (err) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log("MongoDB connection established.");
+  }
+);
 
 // use body-parser to post data
 app.use(bodyParser.json());
