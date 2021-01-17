@@ -179,12 +179,12 @@ let handlePostback = async (sender_psid, received_postback) => {
       break;
     case "LIKE_1":
       let code = test;
-      await axios.post(
-        `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
-        {
-          index: 2,
-        }
-      );
+      //   await axios.post(
+      //     `https://resto-bot-htn.herokuapp.com/api/accepted/${code}`,
+      //     {
+      //       index: 2,
+      //     }
+      //   );
       await chatBotService.sendRestaurant(sender_psid, 1);
       break;
     case "LIKE_2":
