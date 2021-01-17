@@ -113,7 +113,7 @@ const sendRestaurant = (sender_psid) => {
             template_type: "generic",
             elements: [
               {
-                title: "!!! RESTAURANT 1 NAME GOES HER !!!E",
+                title: "!!! RESTAURANT 1 NAME GOES HERE !!!",
                 subtitle: "!!! RESTAURANT 1 DERSCRIPTION GOES HERE !!!",
                 image_url: "https://bit.ly/imageToSend",
                 buttons: [
@@ -121,11 +121,13 @@ const sendRestaurant = (sender_psid) => {
                     type: "postback",
                     title: "LIKE",
                     payload: "LIKE",
+                    randomKey: "randomvalue",
                   },
                   {
                     type: "postback",
                     title: "DISLIKE",
                     payload: "DISLIKE",
+                    randomKey: "randomvalue",
                   },
                 ],
               },
